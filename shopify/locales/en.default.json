@@ -1,0 +1,19 @@
+{
+  "general": {
+    "404": {
+      "title": "404 Page Not Found",
+      "text": "The page you requested does not exist."
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Cart"
+    },
+    "customer": {
+      "account": "Account",
+      "log_in": "Log in",
+      "logout": "Log out",
+      "register": "Register"
+    }
+  }
+}

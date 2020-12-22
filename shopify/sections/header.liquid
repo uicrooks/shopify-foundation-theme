@@ -1,0 +1,35 @@
+<div class="container">
+  <a href="{{ routes.root_url }}">
+    Logo
+  </a>
+
+  {% render 'layout-menu' %}
+
+  <div>
+    {% if shop.customer_accounts_enabled %}
+      {% if customer %}
+        <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+        {{ 'layout.customer.logout' | t | customer_logout_link }}
+      {% else %}
+        {{ 'layout.customer.log_in' | t | customer_login_link }}
+        {{ 'layout.customer.register' | t | customer_register_link }}
+      {% endif %}
+    {% endif %}
+
+    <a href="{{ routes.cart_url }}">
+      {{ 'layout.cart.title' | t }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add custom settings for this section. [Learn more](https://shopify.dev/docs/themes/settings)"
+    }
+  ]
+}
+{% endschema %}

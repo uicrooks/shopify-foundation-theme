@@ -1,0 +1,23 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Shopify Theme Lab",
+    "theme_version": "1.0.0",
+    "theme_author": "THEME_AUTHOR",
+    "theme_documentation_url": "https://THEME_DOCUMENTATION_URL.com",
+    "theme_support_url": "https://THEME_SUPPORT_URL.com"
+  },
+  {
+    "name": "Custom settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "About JSON settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "This file controls the organization and content of the Theme settings area of the theme editor. The settings in this file can be referenced by any other files in your theme. [Learn more](https://shopify.dev/docs/themes/settings)"
+      }
+    ]
+  }
+]

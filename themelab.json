@@ -1,0 +1,10 @@
+{
+  "stack": {
+    "js": [ 
+      "vue" 
+    ],
+    "css": [ 
+      "tailwindcss" 
+    ]
+  }
+}
