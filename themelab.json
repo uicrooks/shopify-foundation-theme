@@ -1,10 +1,9 @@
 {
-  "stack": {
-    "js": [ 
-      "vue" 
-    ],
-    "css": [ 
-      "tailwindcss" 
-    ]
-  }
+  "type": "theme",
+  "name:": "shopify-theme-lab-theme",
+  "description": "sharable Shopify Theme Lab Theme",
+  "author": "Sergej Samsonenko <contact@sergej.codes>",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {}
 }

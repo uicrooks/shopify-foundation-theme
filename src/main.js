@@ -1,2 +1,2 @@
-import './js/my-file.js'
+import './js/script.js'
 import './css/main.css'

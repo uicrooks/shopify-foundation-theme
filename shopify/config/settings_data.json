@@ -1,0 +1,16 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "sections": {
+        "dynamic-section": {
+          "type": "dynamic-section",
+          "category": "Text"
+        }
+      },
+      "content_for_index": [
+        "dynamic-section"
+      ]
+    }
+  }
+}
