@@ -1,6 +1,6 @@
 <!-- logo (start) -->
 <p align="center">
-  <img src=".github/img/logo.svg" width="250px">
+  <img src=".github/img/logo.svg" width="350px">
 </p>
 
 <p align="center">
@@ -17,9 +17,9 @@
 <!-- badges (end) -->
 
 <!-- title / description (start) -->
-<h2 align="center">Shopify Theme Lab</h2>
+<h2 align="center">Shopify Foundation Theme</h2>
 
-Shopify Theme Lab is a customizable modular development environment for blazing-fast Shopify theme creation. By default, it's bundled with Vue.js and Tailwind CSS, but you can swap them for pretty much anything. Build a custom Shopify theme from scratch with a modern stack!
+Shopify Foundation Theme is modern Shopify Theme built on top of [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab) with Vue and Tailwind CSS.
 
-> Disclaimer: This project is not affiliated with Shopify Inc., Tailwind Labs Inc. or Vue.org
+> This project is currently in development and **not production-ready**!
 <!-- title / description (end) -->
