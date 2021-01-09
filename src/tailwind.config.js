@@ -8,7 +8,17 @@ const path = require('path')
 
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: [
+          'Inter',
+          'system-ui',
+          '-apple-system',
+          '"Segoe UI"',
+          'sans-serif'
+        ]
+      }
+    },
     container: {
       center: true,
       padding: '1rem'

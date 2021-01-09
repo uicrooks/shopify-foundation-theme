@@ -15,6 +15,10 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
     {% comment %}
       css bundle is not loaded during the development task, instead it displays a 404 error in the web console
     {% endcomment %}
@@ -25,7 +29,7 @@
   </head>
 
   <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }}" >
-    <div id="app">
+    <div id="app" class="font-sans">
       {% section 'header' %}
 
       <main id="main" role="main">
