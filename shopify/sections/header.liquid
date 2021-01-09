@@ -1,24 +1,46 @@
-<div class="container">
-  <a href="{{ routes.root_url }}">
-    Logo
-  </a>
+<div class="bg-white border-b border-gray-200">
+  <div class="container">
+    <div class="h-32 flex justify-between items-center">
+      <a
+        href="{{ routes.root_url }}"
+        class="inline-block text-3xl font-bold"
+      >
+        Store Name
+      </a>
 
-  {% render 'layout-menu' %}
+      {% render 'layout-menu', class: 'space-x-4' %}
 
-  <div>
-    {% if shop.customer_accounts_enabled %}
-      {% if customer %}
-        <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
-        {{ 'layout.customer.logout' | t | customer_logout_link }}
-      {% else %}
-        {{ 'layout.customer.log_in' | t | customer_login_link }}
-        {{ 'layout.customer.register' | t | customer_register_link }}
-      {% endif %}
-    {% endif %}
+      {% assign link_class = 'flex flex-col justify-center items-center text-sm text-gray-600 p-2' %}
+      {% assign icon_class = 'w-auto h-7 text-black mb-2' %}
 
-    <a href="{{ routes.cart_url }}">
-      {{ 'layout.cart.title' | t }}
-    </a>
+      <div class="flex space-x-6">
+        <a
+          href="{{ routes.search_url }}"
+          class="{{ link_class }}"
+        >
+          {% render 'icon-search', class: icon_class %}
+          Search
+        </a>
+
+        {% if shop.customer_accounts_enabled %}
+          <a
+            href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
+            class="{{ link_class }}"
+          >
+            {% render 'icon-account', class: icon_class %}
+            {{ 'layout.customer.account' | t }}
+          </a>
+        {% endif %}
+
+        <a
+          href="{{ routes.cart_url }}"
+          class="{{ link_class }}"
+        >
+          {% render 'icon-cart', class: icon_class %}
+          {{ 'layout.cart.title' | t }}
+        </a>
+      </div>
+    </div>
   </div>
 </div>
 

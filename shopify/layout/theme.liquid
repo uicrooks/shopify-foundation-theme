@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ request.locale.iso_code }}">
+<html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -28,11 +28,11 @@
     {{ content_for_header }}
   </head>
 
-  <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }}" >
-    <div id="app" class="font-sans">
+  <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }} min-h-screen">
+    <div id="app" class="min-h-screen flex flex-col font-sans">
       {% section 'header' %}
 
-      <main id="main" role="main">
+      <main id="main" class="flex-1" role="main">
         {{ content_for_layout }}
       </main>
 

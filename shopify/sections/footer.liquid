@@ -1,12 +1,35 @@
-<div class="container">
-  <div>
-    {% for link in linklists.footer.links %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
-    {% endfor %}
-  </div>
+<div class="border-t border-gray-200 pt-12 pb-24">
+  <div class="container grid grid-cols-6">
+    <div>
+      <div class="text-lg font-bold mb-3">
+        Quick links
+      </div>
 
-  <div>
-    &copy; Shopify Theme Lab
+      {% for link in linklists.footer.links %}
+        <a
+          href="{{ link.url }}"
+          class="text-gray-600"
+        >
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </div>
+
+    <div>
+      <div class="text-lg font-bold mb-3">
+        Social
+      </div>
+
+      <div class="text-gray-600">
+        Icons
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="border-t border-gray-200 py-8">
+  <div class="container text-sm text-gray-600 text-center">
+    &copy; {{ 'now' | date: "%Y" }} Shopify Foundation Theme
   </div>
 </div>
 
