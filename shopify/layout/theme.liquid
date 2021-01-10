@@ -37,6 +37,7 @@
       {% render 'template-captcha' %}
     {% else %}
       <div id="app" class="min-h-screen flex flex-col font-sans">
+        {% section 'layout-announcement-bar' %}
         {% section 'layout-header' %}
 
         <main id="main" class="flex-1" role="main">

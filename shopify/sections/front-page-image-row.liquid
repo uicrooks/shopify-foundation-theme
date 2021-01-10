@@ -1,0 +1,25 @@
+<div class="container">
+  <div>
+    Our store
+  </div>
+
+  <div class="grid grid-cols-3 gap-4">
+    {% for i in (1..3) %}
+      <div>
+        Image
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"Image row",
+  "presets": [
+    {
+      "name": "Image row",
+      "category": "Images"
+    }
+  ]
+}
+{% endschema %}
