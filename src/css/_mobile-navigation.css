@@ -1,0 +1,7 @@
+.mobile-navigation {
+  @apply sticky bg-white border-t border-gray-200 bottom-0 z-50 py-2;
+
+  @screen md {
+    @apply hidden;
+  }
+}
