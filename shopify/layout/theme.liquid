@@ -29,15 +29,23 @@
   </head>
 
   <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }} min-h-screen">
-    <div id="app" class="min-h-screen flex flex-col font-sans">
-      {% section 'header' %}
+    {% if request.page_type == 'captcha' %}
+      {% comment %}
+        fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
+        but vue removes any script tags on mount, so don't initialize the vue instance on captcha pages
+      {% endcomment %}
+      {% render 'template-captcha' %}
+    {% else %}
+      <div id="app" class="min-h-screen flex flex-col font-sans">
+        {% section 'header' %}
 
-      <main id="main" class="flex-1" role="main">
-        {{ content_for_layout }}
-      </main>
+        <main id="main" class="flex-1" role="main">
+          {{ content_for_layout }}
+        </main>
 
-      {% section 'footer' %}
-    </div>
+        {% section 'footer' %}
+      </div>
+    {% endif %}
 
     <!-- webpack bundle -->
     {{ 'bundle.js' | asset_url | script_tag }}
