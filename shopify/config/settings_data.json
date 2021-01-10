@@ -1,0 +1,54 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "sections": {
+        "front-page-hero": {
+          "type": "front-page-hero",
+          "settings": {}
+        },
+        "front-page-products": {
+          "type": "front-page-products",
+          "settings": {}
+        },
+        "front-page-banner": {
+          "type": "front-page-banner",
+          "settings": {}
+        },
+        "front-page-quotes": {
+          "type": "front-page-quotes",
+          "settings": {}
+        },
+        "front-page-image-row": {
+          "type": "front-page-image-row",
+          "settings": {}
+        },
+        "front-page-newsletter": {
+          "type": "front-page-newsletter",
+          "settings": {}
+        },
+        "layout-header": {
+          "type": "layout-header",
+          "settings": {}
+        },
+        "layout-footer": {
+          "type": "layout-footer",
+          "settings": {
+            "social_instagram_visible": true,
+            "social_twitter_visible": true,
+            "social_facebook_visible": true,
+            "social_youtube_visible": true
+          }
+        }
+      },
+      "content_for_index": [
+        "front-page-hero",
+        "front-page-products",
+        "front-page-banner",
+        "front-page-quotes",
+        "front-page-image-row",
+        "front-page-newsletter"
+      ]
+    }
+  }
+}

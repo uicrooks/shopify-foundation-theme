@@ -7,8 +7,8 @@ node_modules/
 shopify.dev.yml
 shopify.live.yml
 
-# ignored by default, remove next line to include 'settings_data.json' in version control
-shopify/config/settings_data.json
+# uncomment next line to exclude 'settings_data.json' from version control
+# shopify/config/settings_data.json
 
 # ignore all files inside shopify/assets/ except files with 'static' keyword in their filename
 shopify/assets/*
