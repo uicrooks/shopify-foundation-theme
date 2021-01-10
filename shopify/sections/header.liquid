@@ -1,19 +1,21 @@
 <div class="bg-white border-b border-gray-200">
   <div class="container">
-    <div class="h-32 flex justify-between items-center">
+    <div class="h-20 md:h-32 flex justify-center md:justify-between items-center">
       <a
         href="{{ routes.root_url }}"
-        class="inline-block text-3xl font-bold"
+        class="inline-block text-2xl lg:text-3xl font-bold"
       >
-        Store Name
+        {{ shop.name }}
       </a>
 
-      {% render 'layout-menu', class: 'space-x-4' %}
+      <div class="hidden md:block">
+        {% render 'layout-menu', class: 'space-x-4' %}
+      </div>
 
       {% assign link_class = 'flex flex-col justify-center items-center text-sm text-gray-600 p-2' %}
       {% assign icon_class = 'w-auto h-7 text-black mb-2' %}
 
-      <div class="flex space-x-6">
+      <div class="hidden md:flex space-x-2 lg:space-x-6">
         <a
           href="{{ routes.search_url }}"
           class="{{ link_class }}"
