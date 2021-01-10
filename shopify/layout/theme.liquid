@@ -37,13 +37,13 @@
       {% render 'template-captcha' %}
     {% else %}
       <div id="app" class="min-h-screen flex flex-col font-sans">
-        {% section 'header' %}
+        {% section 'layout-header' %}
 
         <main id="main" class="flex-1" role="main">
           {{ content_for_layout }}
         </main>
 
-        {% section 'footer' %}
+        {% section 'layout-footer' %}
       </div>
     {% endif %}
 
