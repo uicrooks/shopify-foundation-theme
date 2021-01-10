@@ -1,0 +1,47 @@
+<div class="flex space-x-3 {{ class | default: '' }}" style="{{ style | default: '' }}">
+  {% assign link_class = 'w-6 h-auto' %}
+
+  {% if social_instagram_visible %}
+    <a
+      href="{{ social_instagram_link }}"
+      target="_blank"
+      class="{{ link_class }}"
+      aria-label="Instagram"
+    >
+      {% render 'icon-social-instagram' %}
+    </a>
+  {% endif %}
+
+  {% if social_twitter_visible %}
+    <a
+      href="{{ social_twitter_link }}"
+      target="_blank"
+      class="{{ link_class }}"
+      aria-label="Twitter"
+    >
+      {% render 'icon-social-twitter' %}
+    </a>
+  {% endif %}
+
+  {% if social_facebook_visible %}
+    <a
+      href="{{ social_facebook_link }}"
+      target="_blank"
+      class="{{ link_class }}"
+      aria-label="Facebook"
+    >
+      {% render 'icon-social-facebook' %}
+    </a>
+  {% endif %}
+
+  {% if social_youtube_visible %}
+    <a
+      href="{{ social_youtube_link }}"
+      target="_blank"
+      class="{{ link_class }}"
+      aria-label="Youtube"
+    >
+      {% render 'icon-social-youtube' %}
+    </a>
+  {% endif %}
+</div>

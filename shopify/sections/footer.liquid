@@ -1,35 +1,54 @@
 <div class="border-t border-gray-200 pt-12 pb-24">
-  <div class="container grid grid-cols-6">
+  <div class="container grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
     <div>
       <div class="text-lg font-bold mb-3">
         Quick links
       </div>
 
       {% for link in linklists.footer.links %}
-        <a
-          href="{{ link.url }}"
-          class="text-gray-600"
-        >
-          {{ link.title }}
-        </a>
+        <div class="space-y-1">
+          <div>
+            <a
+              href="{{ link.url }}"
+              class="text-gray-600"
+            >
+              {{ link.title }}
+            </a>
+          </div>
+        </div>
       {% endfor %}
     </div>
 
-    <div>
-      <div class="text-lg font-bold mb-3">
-        Social
-      </div>
+    {% if
+      section.settings.social_instagram_visible or
+      section.settings.social_twitter_visible or
+      section.settings.social_facebook_visible or
+      section.settings.social_youtube_visible
+    %}
+      <div>
+        <div class="text-lg font-bold mb-3">
+          Social
+        </div>
 
-      <div class="text-gray-600">
-        Icons
+        {% render 'layout-social',
+            class: 'text-gray-600'
+            social_instagram_visible: section.settings.social_instagram_visible
+            social_instagram_link: section.settings.social_instagram_link
+            social_twitter_visible: section.settings.social_twitter_visible
+            social_twitter_link: section.settings.social_twitter_link
+            social_facebook_visible: section.settings.social_facebook_visible
+            social_facebook_link: section.settings.social_facebook_link
+            social_youtube_visible: section.settings.social_youtube_visible
+            social_youtube_link: section.settings.social_youtube_link
+          %}
       </div>
-    </div>
+    {% endif %}
   </div>
 </div>
 
 <div class="border-t border-gray-200 py-8">
   <div class="container text-sm text-gray-600 text-center">
-    &copy; {{ 'now' | date: "%Y" }} Shopify Foundation Theme
+    &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}
   </div>
 </div>
 
@@ -38,8 +57,65 @@
   "name": "Footer",
   "settings": [
     {
-      "type": "paragraph",
-      "content": "Add custom settings for this section. [Learn more](https://shopify.dev/docs/themes/settings)"
+      "type": "header",
+      "content": "Social Icons",
+      "info": "Select which social icons to display"
+    },
+    {
+      "type": "header",
+      "content": "Instagram"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_instagram_visible",
+      "label": "Show Icon"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Twitter"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_twitter_visible",
+      "label": "Show Icon"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Facebook"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_facebook_visible",
+      "label": "Show Icon"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook_link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Youtube"
+    },
+    {
+      "type": "checkbox",
+      "id": "social_youtube_visible",
+      "label": "Show Icon"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube_link",
+      "label": "Link"
     }
   ]
 }
