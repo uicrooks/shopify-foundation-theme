@@ -1,0 +1,15 @@
+.button {
+  @apply w-full inline-block text-base font-medium text-center transition duration-150 px-6 py-2;
+
+  @screen sm {
+    @apply w-auto;
+  }
+}
+
+.button-primary {
+  @apply bg-black text-white;
+
+  &:hover {
+    @apply bg-gray-800;
+  }
+}

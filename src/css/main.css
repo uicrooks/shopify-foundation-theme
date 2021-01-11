@@ -5,6 +5,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
+@import "_buttons";
 @import "_mobile-navigation";
+@import "_sections";
+@import "_v-lazy-image";
 
 @import "tailwindcss/utilities";

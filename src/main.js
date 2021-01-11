@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { VLazyImagePlugin } from 'v-lazy-image'
 import './css/main.css'
 
 /**
@@ -89,7 +90,7 @@ Vue.prototype.$axios = axios
  * vue plugins
  * extend with additional features
  */
-// register additional plugins here
+Vue.use(VLazyImagePlugin)
 
 /**
  * create vue instance

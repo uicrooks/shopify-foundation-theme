@@ -1,10 +1,81 @@
-<div class="container">
-  Hero
+{% assign image = section.settings.image %}
+
+<div class="container mb-12">
+  <div class="hero w-full relative overflow-hidden">
+    {% if image %}
+      <v-lazy-image
+        sizes="
+          (min-width: 1280px) 1500px,
+          (min-width: 1024px) 1250px,
+          (min-width: 768px) 1000px,
+          (min-width: 640px) 720px,
+          600px
+        "
+        srcset="
+          {{ image | img_url: '600x' }} 600w,
+          {{ image | img_url: '720x' }} 720w,
+          {{ image | img_url: '1000x' }} 1000w,
+          {{ image | img_url: '1250x' }} 1250w,
+          {{ image | img_url: '1500x' }} 1500w
+        "
+        src="{{ image | img_url: '1500x' }}"
+        src-placeholder="{{  image | img_url: '50x' }}"
+        alt="{{ section.settings.headline | escape }}"
+        class="w-full h-full object-cover object-center"
+      ></v-lazy-image>
+    {% else %}
+      {{ 'lifestyle-1' | placeholder_svg_tag: "w-full h-full" }}
+    {% endif %}
+
+    <div class="w-full md:max-w-xl md:absolute bottom-0 right-0 bg-white pt-6 md:p-6 md:mb-8 md:mr-8">
+      <div class="text-3xl font-bold mb-2">
+        {{ section.settings.headline }}
+      </div>
+
+      <div class="mb-6">
+        {{ section.settings.text }}
+      </div>
+
+      <a href="{{ section.settings.button-url }}" class="button button-primary">
+        {{ section.settings.button-text }}
+      </a>
+    </div>
+  </div>
 </div>
 
 {% schema %}
 {
   "name":"Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+    },
+    {
+      "type": "url",
+      "id": "button-url",
+      "label": "Button url"
+    },
+    {
+      "type": "text",
+      "id": "button-text",
+      "label": "Button text",
+      "default": "Button"
+    }
+  ],
   "presets": [
     {
       "name": "Hero",
