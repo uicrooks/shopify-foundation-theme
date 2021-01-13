@@ -6,17 +6,17 @@
   {% endif %}
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {% render 'layout-image-row',
+    {% render 'section-image',
       class: 'h-96'
       image: section.settings.image-left
     %}
 
-    {% render 'layout-image-row',
+    {% render 'section-image',
       class: 'h-96'
       image: section.settings.image-middle
     %}
 
-    {% render 'layout-image-row',
+    {% render 'section-image',
       class: 'h-96'
       image: section.settings.image-right
     %}
