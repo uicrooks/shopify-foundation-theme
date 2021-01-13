@@ -20,7 +20,7 @@
         "
         src="{{ image | img_url: '1500x' }}"
         src-placeholder="{{  image | img_url: '50x' }}"
-        alt="{{ section.settings.headline | escape }}"
+        alt="{{ image.alt }}"
         class="w-full h-full object-cover object-center"
       ></v-lazy-image>
     {% else %}
