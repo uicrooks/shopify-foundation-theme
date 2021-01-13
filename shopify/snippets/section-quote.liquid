@@ -1,0 +1,13 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  <div class="md:px-6 lg:px-12 mb-12">
+    {% render 'icon-quotation-marks', class: 'w-5 h-auto mx-auto mb-8' %}
+
+    <div class="text-center mb-6">
+      {{ text }}
+    </div>
+
+    <div class="text-gray-600 text-sm text-center">
+      — {{ author }}
+    </div>
+  </div>
+</div>

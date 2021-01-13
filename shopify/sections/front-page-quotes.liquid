@@ -1,20 +1,87 @@
-<div class="container mb-12">
-  <div>
-    What others say about us
-  </div>
+<div class="container mb-16">
+  {% if section.settings.headline %}
+    <div class="text-3xl font-bold text-center mb-16">
+      {{ section.settings.headline }}
+    </div>
+  {% endif %}
 
-  <div class="grid grid-cols-3 gap-4">
-    {% for i in (1..3) %}
-      <div>
-        Quote
-      </div>
-    {% endfor %}
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% render 'section-quote',
+      text: section.settings.quote-text-left
+      author: section.settings.quote-author-left
+    %}
+
+    {% render 'section-quote',
+      text: section.settings.quote-text-middle
+      author: section.settings.quote-author-middle
+    %}
+
+    {% render 'section-quote',
+      text: section.settings.quote-text-right
+      author: section.settings.quote-author-right
+    %}
   </div>
 </div>
 
 {% schema %}
 {
   "name":"Quotes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "What others say about us"
+    },
+    {
+      "type": "header",
+      "content": "Quote (left)"
+    },
+    {
+      "type": "textarea",
+      "id": "quote-text-left",
+      "label": "Text",
+      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+    },
+    {
+      "type": "text",
+      "id": "quote-author-left",
+      "label": "Author",
+      "default": "Author's name"
+    },
+    {
+      "type": "header",
+      "content": "Quote (middle)"
+    },
+    {
+      "type": "textarea",
+      "id": "quote-text-middle",
+      "label": "Text",
+      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+    },
+    {
+      "type": "text",
+      "id": "quote-author-middle",
+      "label": "Author",
+      "default": "Author's name"
+    },
+    {
+      "type": "header",
+      "content": "Quote (right)"
+    },
+    {
+      "type": "textarea",
+      "id": "quote-text-right",
+      "label": "Text",
+      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+    },
+    {
+      "type": "text",
+      "id": "quote-author-right",
+      "label": "Author",
+      "default": "Author's name"
+    }
+  ],
   "presets": [
     {
       "name": "Quotes",
