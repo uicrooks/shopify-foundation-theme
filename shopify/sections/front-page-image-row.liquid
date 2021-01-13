@@ -1,20 +1,54 @@
 <div class="container mb-12">
-  <div>
-    Our store
-  </div>
+  {% if section.settings.headline %}
+    <div class="text-3xl font-bold text-center mb-12">
+      {{ section.settings.headline }}
+    </div>
+  {% endif %}
 
-  <div class="grid grid-cols-3 gap-4">
-    {% for i in (1..3) %}
-      <div>
-        Image
-      </div>
-    {% endfor %}
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% render 'layout-image-row',
+      class: 'h-96'
+      image: section.settings.image-left
+    %}
+
+    {% render 'layout-image-row',
+      class: 'h-96'
+      image: section.settings.image-middle
+    %}
+
+    {% render 'layout-image-row',
+      class: 'h-96'
+      image: section.settings.image-right
+    %}
   </div>
 </div>
 
 {% schema %}
 {
   "name":"Image row",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our store"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-left",
+      "label": "Image (left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-middle",
+      "label": "Image (middle)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image-right",
+      "label": "Image (right)"
+    }
+  ],
   "presets": [
     {
       "name": "Image row",
