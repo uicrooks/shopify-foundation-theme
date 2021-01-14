@@ -1,6 +1,6 @@
-<div class="container mb-24">
-  <div class="grid lg:grid-cols-3 gap-4 mb-12">
-    <div class="lg:col-start-2 text-3xl font-bold text-center">
+<div class="container mb-12 md:mb-24">
+  <div class="grid lg:grid-cols-3 gap-4 mb-6 md:mb-12">
+    <div class="lg:col-start-2 text-2xl lg:text-3xl font-bold text-center">
       {{ section.settings.headline }}
     </div>
 
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
     {% assign collection = collections[section.settings.collection_featured] %}
 
     {% unless collection == blank %}

@@ -1,6 +1,6 @@
 {% assign image = section.settings.image %}
 
-<div class="container mb-24">
+<div class="container mb-12 md:mb-24">
   <div class="hero w-full relative overflow-hidden">
     {% if image %}
       <v-lazy-image
@@ -28,7 +28,7 @@
     {% endif %}
 
     <div class="w-full md:max-w-xl md:absolute bottom-0 right-0 bg-white pt-6 md:p-6 md:mb-8 md:mr-8">
-      <div class="text-3xl font-bold mb-2">
+      <div class="text-2xl lg:text-3xl font-bold mb-2">
         {{ section.settings.headline }}
       </div>
 
