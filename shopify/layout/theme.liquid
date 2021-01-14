@@ -40,7 +40,7 @@
         {% section 'layout-announcement-bar' %}
         {% section 'layout-header' %}
 
-        <main id="main" class="flex-1 pt-6 md:pt-12" role="main">
+        <main id="main" class="flex-1 pt-6 md:pt-12 {% unless request.page_type == 'index' %}pb-12{% endunless %}" role="main">
           {{ content_for_layout }}
         </main>
 
