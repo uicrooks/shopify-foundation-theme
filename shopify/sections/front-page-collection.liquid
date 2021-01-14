@@ -14,9 +14,18 @@
   <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
     {% assign collection = collections[section.settings.collection_featured] %}
 
-    {% for product in collection.products limit: section.settings.collection_products_limit %}
-      {% render 'layout-product', product: product %}
-    {% endfor %}
+    {% unless collection == blank %}
+      {% for product in collection.products limit: section.settings.collection_products_limit %}
+        {% render 'layout-product', product: product %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..4) %}
+        <div>
+          {% capture placeholder %}product-{{ i }}{% endcapture %}
+          {{ placeholder | placeholder_svg_tag: 'w-full h-full border' }}
+        </div>
+      {% endfor %}
+    {% endunless %}
   </div>
 </div>
 
