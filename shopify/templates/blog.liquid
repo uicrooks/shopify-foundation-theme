@@ -1,1 +1,17 @@
-<!-- blog.liquid -->
+<div class="container max-w-screen-md">
+  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+    {{ page.title }}
+  </h1>
+
+  {% paginate blog.articles by 6 %}
+    <div class="grid sm:grid-cols-2 gap-8">
+      {% for i in (1..6) %}
+      {% for article in blog.articles %}
+        {% render 'layout-blog-article', article: article %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+
+    {% render 'layout-pagination', paginate: paginate %}
+  {% endpaginate %}
+</div>

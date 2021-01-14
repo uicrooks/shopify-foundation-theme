@@ -1,0 +1,19 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  {% if article.title %}
+    <h2 class="text-2xl font-bold mb-1">
+      <a href="{{ article.url }}">
+        {{ article.title }}
+      </a>
+    </h2>
+  {% endif %}
+
+  <div class="text-gray-600 text-sm">
+    {% if article.author %}by {{ article.author }}{% endif %} / {{ article.published_at | date }}
+  </div>
+
+  <div class="mt-6">
+    <a href="{{ article.url }}" class="button button-secondary">
+      Read more
+    </a>
+  </div>
+</div>
