@@ -1,0 +1,62 @@
+<div class="container mb-24">
+  <div class="grid lg:grid-cols-3 gap-4 mb-12">
+    <div class="lg:col-start-2 text-3xl font-bold text-center">
+      {{ section.settings.headline }}
+    </div>
+
+    <div class="hidden lg:flex justify-end items-center">
+      <a href="{{ routes.collections_url }}" class="button button-secondary flex justify-center items-center">
+        view more {% render 'icon-chevron-right.liquid', class: 'w-4 h-auto ml-1', style: 'margin-top: 2px;' %}
+      </a>
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10">
+    {% assign collection = collections[section.settings.collection_featured] %}
+
+    {% for product in collection.products limit: section.settings.collection_products_limit %}
+      {% render 'layout-product', product: product %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name":"Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Selected products"
+    },
+    {
+      "type": "collection",
+      "id": "collection_featured",
+      "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "collection_products_limit",
+      "label": "Max. products to display",
+      "default": "4",
+      "options": [
+        {
+          "value": "4",
+          "label": "4 Products"
+        },
+        {
+          "value": "8",
+          "label": "8 Products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

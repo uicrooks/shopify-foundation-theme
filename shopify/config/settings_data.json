@@ -7,8 +7,8 @@
           "type": "front-page-hero",
           "settings": {}
         },
-        "front-page-products": {
-          "type": "front-page-products",
+        "front-page-collection": {
+          "type": "front-page-collection",
           "settings": {}
         },
         "front-page-banner": {
@@ -43,7 +43,7 @@
       },
       "content_for_index": [
         "front-page-hero",
-        "front-page-products",
+        "front-page-collection",
         "front-page-banner",
         "front-page-quotes",
         "front-page-image-row",

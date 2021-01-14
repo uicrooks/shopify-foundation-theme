@@ -13,3 +13,11 @@
     @apply bg-gray-800;
   }
 }
+
+.button-secondary {
+  @apply border border-black;
+
+  &:hover {
+    @apply bg-black text-white;
+  }
+}
