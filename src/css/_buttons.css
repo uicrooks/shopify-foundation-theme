@@ -1,5 +1,5 @@
 .button {
-  @apply w-full inline-block text-base font-medium text-center transition duration-150 px-6 py-2;
+  @apply w-full inline-block border text-base font-medium text-center transition duration-150 px-6 py-2;
 
   @screen sm {
     @apply w-auto;
@@ -7,17 +7,25 @@
 }
 
 .button-primary {
-  @apply bg-black text-white;
+  @apply bg-black border-black text-white;
 
   &:hover {
-    @apply bg-gray-800;
+    @apply bg-gray-800 border-gray-800;
   }
 }
 
 .button-secondary {
-  @apply border border-black;
+  @apply border-black;
 
   &:hover {
     @apply bg-black text-white;
+  }
+}
+
+.button-tertiary {
+  @apply border-transparent underline;
+
+  &:hover {
+    @apply text-gray-800;
   }
 }
