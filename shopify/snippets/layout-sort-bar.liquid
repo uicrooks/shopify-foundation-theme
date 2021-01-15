@@ -1,0 +1,19 @@
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  <div class="h-16 flex justify-between border-t border-b">
+    <div class="flex items-center">
+      {{ amount }} Products
+    </div>
+
+    {% unless template == 'search' %}
+      <div class="flex items-center">
+        <div class="h-full flex items-center text-gray-600 tracking-wider uppercase mr-4">
+          Sort by
+        </div>
+
+        <div class="h-full border-l pr-1">
+          {% render 'layout-select-sort' %}
+        </div>
+      </div>
+    {% endunless %}
+  </div>
+</div>
