@@ -8,20 +8,22 @@
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
         {% for collection in collections %}
           <div>
-            <v-lazy-image
-              sizes="
-                (min-width: 768px) 450px,
-                400px
-              "
-              srcset="
-                {{ collection.image | img_url: '275x' }} 275w,
-                {{ collection.image | img_url: '450x' }} 450w
-              "
-              src="{{ collection.image | img_url: '400x' }}"
-              src-placeholder="{{ collection.image | img_url: '50x' }}"
-              alt="{{ collection.image.alt | escape }}"
-              class="w-full h-32 sm:h-48 lg:h-64 xl:h-80 object-cover object-center"
-            ></v-lazy-image>
+            <a href="{{ collection.url }}">
+              <v-lazy-image
+                sizes="
+                  (min-width: 768px) 450px,
+                  400px
+                "
+                srcset="
+                  {{ collection.image | img_url: '275x' }} 275w,
+                  {{ collection.image | img_url: '450x' }} 450w
+                "
+                src="{{ collection.image | img_url: '400x' }}"
+                src-placeholder="{{ collection.image | img_url: '50x' }}"
+                alt="{{ collection.image.alt | escape }}"
+                class="w-full h-32 sm:h-48 lg:h-64 xl:h-80 object-cover object-center"
+              ></v-lazy-image>
+            </a>
 
             <div class="mt-4">
               <a href="{{ collection.url }}" class="text-lg font-bold">
