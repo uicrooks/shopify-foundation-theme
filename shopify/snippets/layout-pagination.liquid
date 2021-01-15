@@ -1,0 +1,42 @@
+{% assign link_class = 'w-8 h-8 flex justify-center items-center rounded-sm' %}
+{% assign link_class_arrow = 'hover:bg-black hover:text-white' %}
+{% assign link_class_arrow_disabled = 'text-gray-300 cursor-not-allowed' %}
+
+{% if paginate.pages > 1 %}
+  <nav class="flex justify-center select-none space-x-2 mt-16">
+    <a
+      href="{{ paginate.previous.url }}"
+      class="{{ link_class }} {% if paginate.previous %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
+    >
+      {% render 'icon-chevron-left', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+    </a>
+
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+          <a
+            href="{{ part.url }}"
+            class="{{ link_class }}"
+          >
+            {{ part.title }}
+          </a>
+      {% else %}
+        {% if part.title == paginate.current_page %}
+          <div class="{{ link_class }} bg-black text-white">
+            {{ part.title }}
+          </div>
+        {% else %}
+          <div class="{{ link_class }}">
+            {{ part.title }}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    <a
+      href="{{ paginate.next.url }}"
+      class="{{ link_class }} {% if paginate.next %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
+    >
+      {% render 'icon-chevron-right', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+    </a>
+  </nav>
+{% endif %}
