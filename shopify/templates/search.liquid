@@ -1,1 +1,55 @@
-<!-- search.liquid -->
+<div class="container">
+  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+    Search
+  </h1>
+
+  <div class="max-w-screen-sm flex mx-auto mb-16">
+    <form
+      action="{{ routes.search_url }}"
+      method="get"
+      role="search"
+      class="w-full flex"
+    >
+      {% comment %} search only in products {% endcomment %}
+      <input type="hidden" name="type" value="product" />
+
+      <input
+        type="text"
+        id="Search"
+        name="q"
+        value="{{ search.terms }}"
+        placeholder="Search"
+        class="w-full h-full border px-3"
+      >
+
+      <button class="button button-primary inline-flex">
+        {% render 'icon-search', class: 'w-6 h-auto sm:mr-2' %}
+
+        <span class="hidden sm:inline-block">
+          Search
+        </span>
+      </button>
+    </form>
+  </div>
+
+  {% paginate search.results by 16 %}
+    {% if search.performed %}
+      {% if search and search.results != empty %}
+        {% assign amount = search.results | size %}
+        {% render 'layout-sort-bar', amount: amount class: 'mb-8' %}
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
+          {% for product in search.results %}
+            {% render 'layout-product', product: product %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="text-center">
+          No results
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {% render 'layout-pagination', paginate: paginate %}
+  {% endpaginate %}
+</div>
