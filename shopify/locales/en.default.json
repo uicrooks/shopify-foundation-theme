@@ -59,6 +59,9 @@
       "title": "Reset Password"
     }
   },
+  "collections": {
+    "title": "Collections"
+  },
   "search": {
     "title": "Search",
     "placeholder": "Search",

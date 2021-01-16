@@ -1,10 +1,10 @@
 <div class="container">
-  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
-    Collections
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ 'collections.title' | t }}
   </h1>
 
   {% if collections %}
-    {% paginate collections by 12 %}
+    {% paginate collections by 16 %}
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
         {% for collection in collections %}
           <div>
