@@ -1,6 +1,6 @@
 {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
 
-<div class="select w-full h-full {{ class | default: '' }}" style="{{ style | default: '' }}">
+<div class="w-full h-full {{ class | default: '' }}" style="{{ style | default: '' }}">
   <select
     @change="appendParameter({
       parameter: 'sort_by'

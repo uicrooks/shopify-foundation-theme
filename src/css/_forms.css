@@ -14,3 +14,7 @@ input,
 textarea {
   @apply border rounded-sm px-3 py-2;
 }
+
+select {
+  @apply bg-white;
+}

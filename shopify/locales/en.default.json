@@ -5,9 +5,10 @@
   "common": {
     "or": "or",
     "by": "by",
-    "sort": "Sort by",
+    "sort": "Sort",
     "product": "Product",
-    "products": "Products"
+    "products": "Products",
+    "no_products": "No products"
   },
   "action": {
     "search": "Search",
