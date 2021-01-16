@@ -1,1 +1,102 @@
-<!-- register.liquid -->
+<div class="container max-w-screen-sm">
+  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+    Register
+  </h1>
+
+  {% form 'create_customer' %}
+    <input type="hidden" name="customer[tags]" value="locale={{ request.locale.iso_code }}" />
+
+    {% if form.errors %}
+      {% capture error_text %}
+        {{ form.errors | default_errors }}
+      {% endcapture%}
+
+      {% render 'layout-message',
+        type: 'error'
+        text: error_text
+        class: 'mb-8'
+      %}
+    {% endif %}
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="FirstName"
+        class="block"
+      >
+        First name
+      </label>
+
+      <input
+        type="text"
+        id="FirstName"
+        name="customer[first_name]"
+        {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="LastName"
+        class="block"
+      >
+        Last name
+      </label>
+
+      <input
+        type="text"
+        id="LastName"
+        name="customer[last_name]"
+        {% if form.last_name %}value="{{ form.last_name }}"{% endif %}
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="CustomerEmail"
+        class="block"
+      >
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="CustomerEmail"
+        name="customer[email]"
+        value="{% if form.email %}{{ form.email }}{% endif %}"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-10">
+      <label
+        for="CreatePassword"
+        class="block"
+      >
+        Password
+      </label>
+
+      <input
+        type="password"
+        id="CreatePassword"
+        name="customer[password]"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div>
+      <button
+        type="submit"
+        class="button button-primary"
+      >
+        Register
+      </button>
+    </div>
+
+  {% endform %}
+</div>
