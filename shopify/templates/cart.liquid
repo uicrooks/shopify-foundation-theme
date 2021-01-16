@@ -6,6 +6,22 @@
   {% if cart.item_count > 0 %}
     <form action="/cart?locale={{ request.locale.iso_code }}" method="post" novalidate>
       <input type="hidden" name="attributes[locale]" value="{{ request.locale.iso_code }}" />
+
+      {% for item in cart.items %}
+        {% capture deleteUrl %}{% unless routes.root_url == '/' %}{{ routes.root_url }}{% endunless %}/cart/change?line={{ forloop.index }}&amp;quantity=0{% endcapture %}
+        {% render 'layout-product-cart', product: item deleteUrl: deleteUrl %}
+      {% endfor %}
+
+      <div>
+        Total: {{ cart.total_price | money_with_currency }}
+      </div>
+
+      <button
+        name="checkout"
+        class="button button-primary"
+      >
+        Checkout
+      </button>
     </form>
   {% else %}
     <p class="text-center mb-16">

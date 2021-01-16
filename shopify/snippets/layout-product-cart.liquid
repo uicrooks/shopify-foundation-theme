@@ -1,0 +1,41 @@
+
+<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+  <a href="{{ product.url | within: collections.all }}">
+    <v-lazy-image
+      sizes="
+        (min-width: 768px) 275px,
+        400px
+      "
+      srcset="
+        {{ product | img_url: '275x' }} 275w,
+        {{ product | img_url: '400x' }} 400w
+      "
+      src="{{ product | img_url: '400x' }}"
+      src-placeholder="{{ product | img_url: '50x' }}"
+      alt="{{ product.title | escape }}"
+      class="w-32 h-32 object-cover object-center"
+    ></v-lazy-image>
+  </a>
+
+  {% if product.title %}
+    <a href="{{ product.url | within: collection }}">
+      {{ product.title }}
+    </a>
+  {% endif %}
+
+  <div class="flex">
+    {% if product.original_line_price != product.line_price %}
+      {{ product.original_line_price | money }}
+    {% endif %}
+
+    {{ product.line_price | money }}
+
+    {% for discount in product.discounts %}
+      {{ discount.title }}
+    {% endfor %}
+  </div>
+
+  <a href="{{ deleteUrl }}">
+    Delete
+  </a>
+</div>
