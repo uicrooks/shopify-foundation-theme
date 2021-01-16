@@ -2,4 +2,100 @@
   <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
     {{ page.title }}
   </h1>
+
+  {% form 'contact' %}
+    <div>
+      {% if form.posted_successfully? %}
+        Success
+      {% endif %}
+
+      {% if form.errors %}
+        {{ form.errors | default_errors }}
+      {% endif %}
+
+      <div class="flex flex-wrap md:flex-nowrap md:gap-x-6">
+        <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+          <label
+            for="ContactFormName"
+            class="block"
+          >
+            Name*
+          </label>
+
+          <input
+            type="text"
+            name="contact[name]"
+            id="ContactFormName"
+            value="{% if form.name %}{{ form.name }}{% endif %}"
+            class="w-full"
+            required
+          >
+        </div>
+
+        <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+          <label
+            for="ContactFormEmail"
+            class="block"
+          >
+            Email*
+          </label>
+
+          <input
+            type="email"
+            name="contact[email]"
+            id="ContactFormEmail"
+            value="{% if form.email %}{{ form.email }}{% endif %}"
+            class="w-full"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="mb-4 sm:mb-6">
+        <label
+          for="ContactFormPhone"
+          class="block"
+        >
+          Phone
+        </label>
+
+        <input
+          type="tel"
+          name="contact[phone]"
+          id="ContactFormPhone"
+          value="{% if form.phone %}{{ form.phone }}{% endif %}"
+          class="w-full"
+        >
+      </div>
+
+      <div class="mb-4 sm:mb-6">
+        <label
+          for="ContactFormMessage"
+          class="block"
+        >
+          Message*
+        </label>
+
+        <textarea
+          rows="10"
+          name="contact[body]"
+          id="ContactFormMessage"
+          class="w-full"
+          required
+        >
+          {% if form.body %}
+            {{ form.body }}
+          {% endif %}
+        </textarea>
+      </div>
+
+      <button class="button button-primary">
+        Send
+      </button>
+
+      <div class="text-sm">
+        *Required
+      </div>
+    </div>
+  {% endform %}
 </div>
