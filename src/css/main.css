@@ -6,6 +6,7 @@
 @import "tailwindcss/components";
 
 @import "_buttons";
+@import "_forms";
 @import "_mobile-navigation";
 @import "_sections";
 @import "_v-lazy-image";

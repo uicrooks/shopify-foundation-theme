@@ -1,0 +1,16 @@
+label {
+  @apply text-sm select-none mb-2;
+
+  @screen sm {
+    @apply text-base;
+  }
+}
+
+input {
+  @apply h-12;
+}
+
+input,
+textarea {
+  @apply border px-3 py-2;
+}
