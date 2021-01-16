@@ -1,13 +1,13 @@
 <div class="container flex flex-col items-center">
-  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
-    {{ 'general.404.title' | t }}
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4">
+    {{ '404.title' | t }}
   </h1>
 
   <p class="mb-16">
-    {{ 'general.404.text' | t }}
+    {{ '404.text' | t }}
   </p>
 
-  <a href="{{ routes.root_url }}" class="button button-primary inline-flex">
-    Continue shopping {% render 'icon-chevron-right', class: 'w-4 h-auto ml-1' style: 'margin-top: 2px;' %}
+  <a href="{{ routes.root_url }}" class="button button-primary inline-flex justify-center">
+    {{ 'action.continue_shopping' | t }} {% render 'icon-chevron-right', class: 'w-4 h-auto ml-1' style: 'margin-top: 2px;' %}
   </a>
 </div>

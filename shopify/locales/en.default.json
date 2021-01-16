@@ -7,6 +7,7 @@
   },
   "action": {
     "send": "Send",
+    "continue_shopping": "Continue shopping",
     "read_more": "Read more"
   },
   "form": {
@@ -32,11 +33,9 @@
     "title": "Contact",
     "response": "Thank you for your contact"
   },
-  "general": {
-    "404": {
-      "title": "404 Page Not Found",
-      "text": "The page you requested does not exist."
-    }
+  "404": {
+    "title": "404 Page Not Found",
+    "text": "The page you requested does not exist."
   },
   "layout": {
     "cart": {
