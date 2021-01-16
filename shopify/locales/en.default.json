@@ -6,6 +6,8 @@
     "by": "by"
   },
   "action": {
+    "log_in": "Log in",
+    "sign_in": "Sign in",
     "send": "Send",
     "continue_shopping": "Continue shopping",
     "read_more": "Read more"
@@ -32,6 +34,10 @@
   "contact": {
     "title": "Contact",
     "response": "Thank you for your contact"
+  },
+  "password": {
+    "coming_soon": "Coming soon",
+    "store_owner": "Are you the store owner?"
   },
   "404": {
     "title": "404 Page Not Found",
