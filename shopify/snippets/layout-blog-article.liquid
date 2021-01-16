@@ -1,19 +1,27 @@
-<div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
+<div class="flex flex-col {{ class | default: '' }}" style="{{ style | default: '' }}">
   {% if article.title %}
-    <h2 class="text-2xl font-bold mb-1">
+    <h2 class="text-xl md:text-2xl font-bold md:mb-1">
       <a href="{{ article.url }}">
         {{ article.title }}
       </a>
     </h2>
   {% endif %}
 
-  <div class="text-gray-600 text-sm">
-    {% if article.author %}by {{ article.author }}{% endif %} / {{ article.published_at | date }}
+  <div class="text-gray-600 text-sm mb-4">
+    {% if article.author %}{{ 'common.by' | t }} {{ article.author }} / {% endif %}{{ article.published_at | date: format: 'month_day_year' }}
   </div>
 
-  <div class="mt-6">
+  <div class="flex-1 mb-6">
+    {% if article.excerpt.size > 0 %}
+      {{ article.excerpt }}
+    {% else %}
+      {{ article.content | strip_html | truncate: 150 }}
+    {% endif %}
+  </div>
+
+  <div>
     <a href="{{ article.url }}" class="button button-secondary">
-      Read more
+      {{ 'action.read_more' | t }}
     </a>
   </div>
 </div>

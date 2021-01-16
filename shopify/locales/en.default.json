@@ -1,4 +1,13 @@
 {
+  "date_formats": {
+    "month_day_year": "%b %d, %Y"
+  },
+  "common": {
+    "by": "by"
+  },
+  "action": {
+    "read_more": "Read more"
+  },
   "general": {
     "404": {
       "title": "404 Page Not Found",

@@ -1,5 +1,5 @@
 .button {
-  @apply w-full inline-block border text-base font-medium text-center transition duration-150 px-6 py-2;
+  @apply w-full inline-block border text-sm font-medium text-center transition duration-150 px-6 py-2;
 
   @screen sm {
     @apply w-auto;

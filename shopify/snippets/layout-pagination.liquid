@@ -8,7 +8,7 @@
       href="{{ paginate.previous.url }}"
       class="{{ link_class }} {% if paginate.previous %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
     >
-      {% render 'icon-chevron-left', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+      {% render 'icon-chevron-left', class: 'w-4 h-auto' %}
     </a>
 
     {% for part in paginate.parts %}
@@ -36,7 +36,7 @@
       href="{{ paginate.next.url }}"
       class="{{ link_class }} {% if paginate.next %}{{ link_class_arrow }}{% else %}{{ link_class_arrow_disabled }}{% endif %}"
     >
-      {% render 'icon-chevron-right', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+      {% render 'icon-chevron-right', class: 'w-4 h-auto' %}
     </a>
   </nav>
 {% endif %}
