@@ -13,10 +13,7 @@
   {% paginate collection.products by 16 %}
     {% if collection and collection.products %}
       {% assign amount = collection.all_products_count %}
-      {% render 'layout-sort-bar',
-        amount: amount
-        class: 'mb-8'
-      %}
+      {% render 'layout-sort-bar', amount: amount class: 'mb-8' %}
 
       <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
         {% for product in collection.products %}
