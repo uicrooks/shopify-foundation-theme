@@ -1,6 +1,6 @@
 <div class="container max-w-screen-sm">
-  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
-    Login
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ 'customer.entry.log_in' | t }}
   </h1>
 
   {% form 'customer_login' %}
@@ -21,7 +21,7 @@
         for="CustomerEmail"
         class="block"
       >
-        Email
+        {{ 'form.email' | t }}
       </label>
 
       <input
@@ -39,7 +39,7 @@
           for="CustomerPassword"
           class="block"
         >
-          Password
+          {{ 'form.password' | t }}
         </label>
 
         <input
@@ -52,14 +52,24 @@
       </div>
     {% endif %}
 
-    <div>
+    <div class="flex flex-wrap gap-4 sm:gap-6">
       <button
         type="submit"
         class="button button-primary"
       >
-        Sign in
+        {{ 'action.sign_in' | t }}
       </button>
-    </div>
 
+      <div class="w-full sm:w-auto flex justify-center items-center">
+        <span>{{ 'common.or' | t }}&nbsp;</span>
+
+        <a
+          href="submit"
+          class="underline"
+        >
+          {{ 'action.create_account' | t }}
+        </a>
+      </div>
+    </div>
   {% endform %}
 </div>
