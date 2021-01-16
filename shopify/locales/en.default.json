@@ -15,6 +15,9 @@
     "sign_in": "Sign in",
     "create_account": "Create account",
     "send": "Send",
+    "reset_password": "Reset password",
+    "activate": "Activate",
+    "decline": "Decline",
     "continue_shopping": "Continue shopping",
     "read_more": "Read more"
   },
