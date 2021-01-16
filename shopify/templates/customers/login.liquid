@@ -1,1 +1,65 @@
-<!-- login.liquid -->
+<div class="container max-w-screen-sm">
+  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+    Login
+  </h1>
+
+  {% form 'customer_login' %}
+    {% if form.errors %}
+      {% capture error_text %}
+        {{ form.errors | default_errors }}
+      {% endcapture%}
+
+      {% render 'layout-message',
+        type: 'error'
+        text: error_text
+        class: 'mb-8'
+      %}
+    {% endif %}
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="CustomerEmail"
+        class="block"
+      >
+        Email
+      </label>
+
+      <input
+        type="email"
+        id="CustomerEmail"
+        name="customer[email]"
+        class="w-full"
+        required
+      >
+    </div>
+
+    {% if form.password_needed %}
+      <div class="mb-4 sm:mb-10">
+        <label
+          for="CustomerPassword"
+          class="block"
+        >
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="CustomerPassword"
+          name="customer[password]"
+          class="w-full"
+          required
+        >
+      </div>
+    {% endif %}
+
+    <div>
+      <button
+        type="submit"
+        class="button button-primary"
+      >
+        Sign in
+      </button>
+    </div>
+
+  {% endform %}
+</div>
