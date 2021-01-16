@@ -3,11 +3,17 @@
     "month_day_year": "%b %d, %Y"
   },
   "common": {
+    "or": "or",
     "by": "by"
   },
   "action": {
+    "search": "Search",
+    "cart": "Cart",
+    "account": "Account",
+    "menu": "Menu",
     "log_in": "Log in",
     "sign_in": "Sign in",
+    "create_account": "Create account",
     "send": "Send",
     "continue_shopping": "Continue shopping",
     "read_more": "Read more"
@@ -31,6 +37,20 @@
     "phone": "Phone",
     "message": "Message"
   },
+  "customer": {
+    "entry": {
+      "log_in": "Log in",
+      "create_account": "Create account",
+      "reset_password_notice": "We will send you an email to reset your password.",
+      "reset_password_response": "Sent recovery mail"
+    },
+    "activate_account": {
+      "title": "Activate Account"
+    },
+    "reset_password": {
+      "title": "Reset Password"
+    }
+  },
   "contact": {
     "title": "Contact",
     "response": "Thank you for your contact"
@@ -42,16 +62,5 @@
   "404": {
     "title": "404 Page Not Found",
     "text": "The page you requested does not exist."
-  },
-  "layout": {
-    "cart": {
-      "title": "Cart"
-    },
-    "customer": {
-      "account": "Account",
-      "log_in": "Log in",
-      "logout": "Log out",
-      "register": "Register"
-    }
   }
 }

@@ -21,7 +21,7 @@
           class="{{ link_class }}"
         >
           {% render 'icon-search', class: icon_class %}
-          Search
+          {{ 'action.search' | t }}
         </a>
 
         {% if shop.customer_accounts_enabled %}
@@ -30,7 +30,7 @@
             class="{{ link_class }}"
           >
             {% render 'icon-account', class: icon_class %}
-            {{ 'layout.customer.account' | t }}
+            {{ 'action.account' | t }}
           </a>
         {% endif %}
 
@@ -39,7 +39,7 @@
           class="{{ link_class }}"
         >
           {% render 'icon-cart', class: icon_class %}
-          {{ 'layout.cart.title' | t }}
+          {{ 'action.cart' | t }}
         </a>
       </div>
     </div>
