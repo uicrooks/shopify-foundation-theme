@@ -4,13 +4,17 @@
   },
   "common": {
     "or": "or",
-    "by": "by"
+    "by": "by",
+    "sort": "Sort by",
+    "product": "Product",
+    "products": "Products"
   },
   "action": {
     "search": "Search",
     "cart": "Cart",
     "account": "Account",
     "menu": "Menu",
+    "to_search": "Search",
     "log_in": "Log in",
     "sign_in": "Sign in",
     "create_account": "Create account",
@@ -53,6 +57,11 @@
     "reset_password": {
       "title": "Reset Password"
     }
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search",
+    "no_results": "No results"
   },
   "contact": {
     "title": "Contact",
