@@ -1,1 +1,62 @@
-<!-- activate_account.liquid -->
+<div class="container">
+  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
+    Activate account
+  </h1>
+
+  {% form 'activate_customer_password' %}
+    {% if form.errors %}
+      {{ form.errors | default_errors }}
+    {% endif %}
+
+    <div class="mb-4 sm:mb-6">
+      <label
+        for="password"
+        class="block"
+      >
+        Password
+      </label>
+
+      <input
+        type="password"
+        id="password"
+        name="customer[password]"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="mb-4 sm:mb-10">
+      <label
+        for="PasswordConfirmation"
+        class="block"
+      >
+        Confirm password
+      </label>
+
+      <input
+        type="password"
+        id="PasswordConfirmation"
+        name="customer[password_confirmation]"
+        class="w-full"
+        required
+      >
+    </div>
+
+    <div class="flex">
+      <button
+        type="submit"
+        class="button button-primary"
+      >
+        Activate
+      </button>
+
+      <button
+        type="submit"
+        name="decline"
+        class="button button-tertiary"
+      >
+        Cancel
+      </button>
+    </div>
+  {% endform %}
+</div>
