@@ -21,11 +21,3 @@
     @apply bg-black text-white;
   }
 }
-
-.button-tertiary {
-  @apply border-transparent underline;
-
-  &:hover {
-    @apply text-gray-800;
-  }
-}
