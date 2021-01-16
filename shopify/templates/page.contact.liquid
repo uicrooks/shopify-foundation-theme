@@ -1,12 +1,12 @@
 <div class="container max-w-screen-md">
-  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
-    {{ page.title }}
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ 'contact.title' | t }}
   </h1>
 
   {% form 'contact' %}
     <div>
       {% if form.posted_successfully? %}
-        Success
+        {{ 'contact.response' | t }}
       {% endif %}
 
       {% if form.errors %}
@@ -27,7 +27,7 @@
             for="ContactFormName"
             class="block"
           >
-            Name*
+            {{ 'form.name' | t }}*
           </label>
 
           <input
@@ -45,7 +45,7 @@
             for="ContactFormEmail"
             class="block"
           >
-            Email*
+            {{ 'form.email' | t }}*
           </label>
 
           <input
@@ -64,7 +64,7 @@
           for="ContactFormPhone"
           class="block"
         >
-          Phone
+          {{ 'form.phone' | t }}
         </label>
 
         <input
@@ -81,7 +81,7 @@
           for="ContactFormMessage"
           class="block"
         >
-          Message*
+          {{ 'form.message' | t }}*
         </label>
 
         <textarea
@@ -97,12 +97,14 @@
         </textarea>
       </div>
 
-      <button class="button button-primary">
-        Send
-      </button>
+      <div class="flex flex-wrap justify-between items-center">
+        <button class="button button-primary">
+          {{ 'action.send' | t }}
+        </button>
 
-      <div class="text-sm">
-        *Required
+        <div class="text-sm mt-4 sm:mt-0">
+          *{{ 'form.required' | t }}
+        </div>
       </div>
     </div>
   {% endform %}

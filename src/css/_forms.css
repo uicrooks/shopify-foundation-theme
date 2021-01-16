@@ -12,5 +12,5 @@ input {
 
 input,
 textarea {
-  @apply border px-3 py-2;
+  @apply border rounded-sm px-3 py-2;
 }
