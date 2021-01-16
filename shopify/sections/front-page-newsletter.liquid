@@ -10,7 +10,15 @@
 
     {% form 'customer', class: 'w-full' %}
       {% if form.errors %}
-        {{ form.errors | default_errors }}
+        {% capture error_text %}
+          {{ form.errors | default_errors }}
+        {% endcapture%}
+
+        {% render 'layout-message',
+          type: 'error'
+          text: error_text
+          class: 'mb-8'
+        %}
       {% endif %}
 
       {% if form.posted_successfully? %}

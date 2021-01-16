@@ -5,7 +5,15 @@
 
   {% form 'activate_customer_password' %}
     {% if form.errors %}
-      {{ form.errors | default_errors }}
+      {% capture error_text %}
+        {{ form.errors | default_errors }}
+      {% endcapture%}
+
+      {% render 'layout-message',
+        type: 'error'
+        text: error_text
+        class: 'mb-8'
+      %}
     {% endif %}
 
     <div class="mb-4 sm:mb-6">
