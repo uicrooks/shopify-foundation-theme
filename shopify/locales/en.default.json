@@ -8,6 +8,9 @@
     "sort": "Sort",
     "product": "Product",
     "products": "Products",
+    "price": "Price",
+    "quantity": "Quantity",
+    "total": "Total",
     "no_products": "No products"
   },
   "action": {
@@ -16,6 +19,8 @@
     "account": "Account",
     "menu": "Menu",
     "to_search": "Search",
+    "checkout": "Checkout",
+    "remove": "Remove",
     "log_in": "Log in",
     "sign_in": "Sign in",
     "create_account": "Create account",
@@ -61,6 +66,11 @@
   },
   "collections": {
     "title": "Collections"
+  },
+  "cart": {
+    "title": "Cart",
+    "subtotal": "Subtotal",
+    "empty_cart": "Your cart is empty"
   },
   "search": {
     "title": "Search",

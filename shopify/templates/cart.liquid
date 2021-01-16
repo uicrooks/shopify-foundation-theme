@@ -1,36 +1,57 @@
-<div class="container max-w-screen-md">
-  <h1 class="text-2xl lg:text-3xl font-bold text-center mb-8">
-    Cart
+<div class="container max-w-screen-lg">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4">
+    {{ 'cart.title' | t }}
   </h1>
 
+  <div class="text-center mb-8 md:mb-16">
+    <a href="{{ routes.root_url }}" class="text-sm underline">
+      {{ 'action.continue_shopping' | t }}
+    </a>
+  </div>
+
   {% if cart.item_count > 0 %}
+    <div class="grid grid-cols-8 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4 mb-8">
+      <span class="col-span-5">{{ 'common.product' | t }}</span>
+      <span class="text-right">{{ 'common.price' | t }}</span>
+      <span class="text-right">{{ 'common.quantity' | t }}</span>
+      <span class="text-right">{{ 'common.total' | t }}</span>
+    </div>
+
     <form action="/cart?locale={{ request.locale.iso_code }}" method="post" novalidate>
       <input type="hidden" name="attributes[locale]" value="{{ request.locale.iso_code }}" />
 
       {% for item in cart.items %}
         {% capture deleteUrl %}{% unless routes.root_url == '/' %}{{ routes.root_url }}{% endunless %}/cart/change?line={{ forloop.index }}&amp;quantity=0{% endcapture %}
-        {% render 'layout-product-cart', product: item deleteUrl: deleteUrl %}
+
+        {% render 'layout-product-cart',
+          class: 'mb-8'
+          product: item
+          deleteUrl: deleteUrl
+        %}
       {% endfor %}
 
-      <div>
-        Total: {{ cart.total_price | money_with_currency }}
-      </div>
+      <div class="flex flex-col items-end border-t pt-6">
+        <div class="text-lg font-semibold space-x-8">
+          <span class="inline-block">{{ 'cart.subtotal' | t }}</span>
+          <span class="inline-block">{{ cart.total_price | money_with_currency }}</span>
+        </div>
 
-      <button
-        name="checkout"
-        class="button button-primary"
-      >
-        Checkout
-      </button>
+        <button
+          name="checkout"
+          class="button button-primary mt-8"
+        >
+          {{ 'action.checkout' | t }}
+        </button>
+      </div>
     </form>
   {% else %}
     <p class="text-center mb-16">
-      Your cart is currently empty
+      {{ 'cart.empty_cart' | t }}
     </p>
 
     <div class="text-center">
       <a href="{{ routes.root_url }}" class="button button-primary inline-flex">
-        Continue shopping {% render 'icon-chevron-right', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
+        {{ 'action.continue_shopping' | t }} {% render 'icon-chevron-right', class: 'w-4 h-auto', style: 'margin-top: 2px;' %}
       </a>
     </div>
   {% endif %}
