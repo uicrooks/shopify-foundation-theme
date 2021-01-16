@@ -6,7 +6,31 @@
     "by": "by"
   },
   "action": {
+    "send": "Send",
     "read_more": "Read more"
+  },
+  "form": {
+    "required": "Required fields",
+    "name": "Name",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "new_password": "New password",
+    "confirm_new_password": "Confirm new password",
+    "confirm_password": "Confirm password",
+    "company": "Company",
+    "address": "Address",
+    "apartment": "Apartment, suite, etc.",
+    "city": "City",
+    "country": "Country",
+    "zip_code": "Postal/Zip Code",
+    "phone": "Phone",
+    "message": "Message"
+  },
+  "contact": {
+    "title": "Contact",
+    "response": "Thank you for your contact"
   },
   "general": {
     "404": {
