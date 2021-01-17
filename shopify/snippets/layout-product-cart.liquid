@@ -1,50 +1,56 @@
 
 <div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
   <div class="grid grid-cols-8 gap-4">
-    <a href="{{ product.url | within: collections.all }}">
-      <v-lazy-image
-        sizes="
-          (min-width: 768px) 275px,
-          400px
-        "
-        srcset="
-          {{ product | img_url: '275x' }} 275w,
-          {{ product | img_url: '400x' }} 400w
-        "
-        src="{{ product | img_url: '400x' }}"
-        src-placeholder="{{ product | img_url: '50x' }}"
-        alt="{{ product.title | escape }}"
-        class="w-32 h-32 object-cover object-center"
-      ></v-lazy-image>
-    </a>
-
-    <div class="col-span-4">
-      {% if product.title %}
-        <a href="{{ product.url | within: collection }}" class="text-lg font-bold mb-2">
-          {{ product.title }}
-        </a>
-      {% endif %}
-
-      <div class="text-sm">
-        {% for option in product.options_with_values %}
-          <div>{{ option.name }}: {{ option.value }}</div>
-        {% endfor %}
-      </div>
-
-      <a href="{{ deleteUrl }}" class="text-sm underline mt-4">
-        {{ 'action.remove' | t }}
+    <div class="col-span-5 flex gap-6">
+      <a href="{{ product.url | within: collections.all }}">
+        <v-lazy-image
+          sizes="
+            (min-width: 768px) 275px,
+            400px
+          "
+          srcset="
+            {{ product | img_url: '275x' }} 275w,
+            {{ product | img_url: '400x' }} 400w
+          "
+          src="{{ product | img_url: '400x' }}"
+          src-placeholder="{{ product | img_url: '50x' }}"
+          alt="{{ product.title | escape }}"
+          class="w-32 h-32 object-cover object-center"
+        ></v-lazy-image>
       </a>
+
+      <div class="flex flex-col py-2">
+        {% if product.title %}
+          <a href="{{ product.url | within: collection }}" class="text-lg font-bold mb-2">
+            {{ product.title }}
+          </a>
+        {% endif %}
+
+        {% if product.options_with_values %}
+          <div class="text-sm">
+            {% for option in product.options_with_values %}
+              <div>{{ option.name }}: {{ option.value }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if deleteUrl %}
+          <a href="{{ deleteUrl }}" class="text-sm underline mt-auto">
+            {{ 'action.remove' | t }}
+          </a>
+        {% endif %}
+      </div>
     </div>
 
-    <div class="text-right">
+    <div class="flex justify-end items-center">
       {{ product.price | money }}
     </div>
 
-    <div class="text-right">
-      {{ product.quantity }}
+    <div class="flex justify-end items-center">
+      x{{ product.quantity }}
     </div>
 
-    <div class="text-right">
+    <div class="flex justify-end items-center">
       {% if product.original_line_price != product.line_price %}
         {{ product.original_line_price | money }}
       {% endif %}
