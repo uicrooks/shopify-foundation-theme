@@ -10,7 +10,7 @@
   </div>
 
   {% if cart.item_count > 0 %}
-    <div class="grid grid-cols-8 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4 mb-8">
+    <div class="hidden md:grid grid-cols-8 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4 mb-8">
       <span class="col-span-5">{{ 'common.product' | t }}</span>
       <span class="text-right">{{ 'common.price' | t }}</span>
       <span class="text-right">{{ 'common.quantity' | t }}</span>
@@ -24,7 +24,7 @@
         {% capture deleteUrl %}{% unless routes.root_url == '/' %}{{ routes.root_url }}{% endunless %}/cart/change?line={{ forloop.index }}&amp;quantity=0{% endcapture %}
 
         {% render 'layout-product-cart',
-          class: 'mb-8'
+          class: 'mb-12 md:mb-8'
           product: item
           deleteUrl: deleteUrl
         %}

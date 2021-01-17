@@ -1,8 +1,8 @@
 
 <div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
-  <div class="grid grid-cols-8 gap-4">
-    <div class="col-span-5 flex gap-6">
-      <a href="{{ product.url | within: collections.all }}">
+  <div class="md:grid grid-cols-8 gap-4">
+    <div class="col-span-5 flex flex-wrap gap-2 md:gap-6 mb-4 md:mb-0">
+      <a href="{{ product.url | within: collections.all }}" class="block w-full md:w-32 h-64 md:h-32">
         <v-lazy-image
           sizes="
             (min-width: 768px) 275px,
@@ -15,7 +15,7 @@
           src="{{ product | img_url: '400x' }}"
           src-placeholder="{{ product | img_url: '50x' }}"
           alt="{{ product.title | escape }}"
-          class="w-32 h-32 object-cover object-center"
+          class="w-full h-full object-cover object-center"
         ></v-lazy-image>
       </a>
 
@@ -35,27 +35,27 @@
         {% endif %}
 
         {% if deleteUrl %}
-          <a href="{{ deleteUrl }}" class="text-sm underline mt-auto">
+          <a href="{{ deleteUrl }}" class="text-sm underline mt-2 md:mt-auto">
             {{ 'action.remove' | t }}
           </a>
         {% endif %}
       </div>
     </div>
 
-    <div class="flex justify-end items-center">
-      {{ product.price | money }}
+    <div class="flex justify-between md:justify-end items-center">
+      <span class="md:hidden">{{ 'common.price' | t }}</span> {{ product.price | money }}
     </div>
 
-    <div class="flex justify-end items-center">
-      x{{ product.quantity }}
+    <div class="flex justify-between md:justify-end items-center">
+      <span class="md:hidden">{{ 'common.quantity' | t }}</span> x{{ product.quantity }}
     </div>
 
-    <div class="flex justify-end items-center">
+    <div class="flex justify-between md:justify-end items-center">
       {% if product.original_line_price != product.line_price %}
         {{ product.original_line_price | money }}
       {% endif %}
 
-      {{ product.line_price | money }}
+      <span class="md:hidden">{{ 'common.total' | t }}</span> {{ product.line_price | money }}
 
       {% for discount in product.discounts %}
         {{ discount.title }}
