@@ -75,6 +75,15 @@
     "subtotal": "Subtotal",
     "empty_cart": "Your cart is empty"
   },
+  "gift_card": {
+    "title": "Gift card",
+    "value": "value",
+    "left": "left",
+    "expires": "This gift card expires on",
+    "expired": "This gift card has expired on",
+    "disabled": "This gift card is disabled",
+    "redeem": "Redeem your gift card at"
+  },
   "search": {
     "title": "Search",
     "placeholder": "Search",

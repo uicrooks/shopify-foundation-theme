@@ -1,1 +1,82 @@
-<!-- gift_card.liquid -->
+{% layout 'gift_card' %}
+
+<div class="container max-w-screen-md pt-16 md:pt-32">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+    {{ shop.name }}
+  </h1>
+
+  <div class="max-w-sm border mx-auto p-6 mb-16">
+    <div class="flex justify-between mb-20">
+      <div class="text-2xl font-bold">
+        {{ 'gift_card.title' | t }}
+      </div>
+
+      {% comment %} value - start {% endcomment %}
+        {% if gift_card.enabled %}
+          <div>
+            {% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+            {% assign formatted_current_balance = gift_card.balance | money %}
+
+            {% if gift_card.balance != gift_card.initial_value %}
+              <span class="mr-1">
+                {{ 'gift_card.left' | t }}
+              </span>
+
+              {{ formatted_current_balance }}
+            {% else %}
+              <span class="mr-1">
+                {{ 'gift_card.value' | t }}
+              </span>
+
+              <span class="text-xl sm:text-2xl font-bold">
+                {{ formatted_initial_value }}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% comment %} value - end {% endcomment %}
+    </div>
+
+    {% comment %} code - start {% endcomment %}
+      <div class="bg-gray-100 text-gray-600 text-sm sm:text-lg text-center px-4 py-3">
+        {% if gift_card.enabled %}
+          {{ gift_card.code | format_code }}
+        {% else %}
+          {{ 'gift_card.disabled' | t }}
+        {% endif %}
+      </div>
+    {% comment %} code - end {% endcomment %}
+
+    {% comment %} expire date - start {% endcomment %}
+      {% assign gift_card_expiry_date = gift_card.expires_on | date: format: 'month_day_year' %}
+
+      {% if gift_card.expired and gift_card.enabled %}
+        <div class="text-xs text-gray-600 text-center mt-4">
+          {{ 'gift_card.expired' | t }} {{ gift_card_expiry_date }}
+        </div>
+      {% endif %}
+
+      {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
+        <div class="text-xs text-gray-600 text-center mt-4">
+          {{ 'gift_card.expires' | t }} {{ gift_card_expiry_date }}
+        </div>
+      {% endif %}
+    {% comment %} expire date - end {% endcomment %}
+  </div>
+
+  {% if gift_card.enabled and gift_card.expired != true %}
+    <div class="flex flex-col items-center">
+      <p class="mb-4">
+        {{ 'gift_card.redeem' | t }}
+      </p>
+
+      <a
+        href="{{ shop.url }}"
+        class="button button-primary"
+        target="_blank"
+      >
+        {{ shop.name }}
+      </a>
+    </div>
+  {% endif %}
+</div>
