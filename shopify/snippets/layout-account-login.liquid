@@ -1,0 +1,79 @@
+<h1 class="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-16">
+  {{ 'customer.entry.log_in' | t }}
+</h1>
+
+{% form 'customer_login' %}
+  {% if form.errors %}
+    {% capture error_text %}
+      {{ form.errors | default_errors }}
+    {% endcapture%}
+
+    {% render 'layout-message',
+      type: 'error'
+      text: error_text
+      class: 'mb-8'
+    %}
+  {% endif %}
+
+  <div class="mb-4 sm:mb-6">
+    <label
+      for="CustomerEmail"
+      class="block"
+    >
+      {{ 'form.email' | t }}
+    </label>
+
+    <input
+      type="email"
+      id="CustomerEmail"
+      name="customer[email]"
+      class="w-full"
+      required
+    >
+  </div>
+
+  {% if form.password_needed %}
+    <div class="mb-4 sm:mb-10">
+      <label
+        for="CustomerPassword"
+        class="block"
+      >
+        {{ 'form.password' | t }}
+      </label>
+
+      <input
+        type="password"
+        id="CustomerPassword"
+        name="customer[password]"
+        class="w-full"
+        required
+      >
+    </div>
+  {% endif %}
+
+  <div class="flex flex-wrap gap-4 sm:gap-6">
+    <button
+      type="submit"
+      class="button button-primary"
+    >
+      {{ 'action.sign_in' | t }}
+    </button>
+
+    <div class="w-full sm:w-auto flex justify-center items-center">
+      <span>{{ 'common.or' | t }}&nbsp;</span>
+
+      <a
+        href="{{ routes.root_url }}account/register"
+        class="underline"
+      >
+        {{ 'action.create_account' | t }}
+      </a>
+    </div>
+  </div>
+
+  {% if form.password_needed %}
+    <button class="text-gray-600 text-sm mt-8" @click.prevent="show('forgot-password')">
+      {{ 'action.forgot_your_password' | t }}
+    </button>
+  {% endif %}
+{% endform %}

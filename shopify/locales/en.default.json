@@ -24,10 +24,13 @@
     "log_in": "Log in",
     "sign_in": "Sign in",
     "create_account": "Create account",
+    "restore": "Restore",
     "send": "Send",
     "reset_password": "Reset password",
     "activate": "Activate",
     "decline": "Decline",
+    "cancel": "Cancel",
+    "forgot_your_password": "Forgot your password?",
     "continue_shopping": "Continue shopping",
     "read_more": "Read more"
   },
