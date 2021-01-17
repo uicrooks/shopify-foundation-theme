@@ -18,6 +18,7 @@
     "cart": "Cart",
     "account": "Account",
     "menu": "Menu",
+    "view_more": "view more",
     "to_search": "Search",
     "checkout": "Checkout",
     "remove": "Remove",
@@ -32,6 +33,7 @@
     "cancel": "Cancel",
     "forgot_your_password": "Forgot your password?",
     "continue_shopping": "Continue shopping",
+    "subscribe": "Subscribe",
     "read_more": "Read more"
   },
   "form": {
@@ -100,5 +102,9 @@
   "404": {
     "title": "404 Page Not Found",
     "text": "The page you requested does not exist."
+  },
+  "footer": {
+    "menu": "Quick links",
+    "social": "Social"
   }
 }
