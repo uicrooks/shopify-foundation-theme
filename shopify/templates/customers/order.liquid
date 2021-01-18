@@ -1,1 +1,211 @@
-<!-- order.liquid -->
+<div class="container max-w-screen-xl">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4">
+    {{ 'customer.order.title' | t }}
+  </h1>
+
+  <div class="text-center mb-8 md:mb-16">
+    <a href="{{ routes.account_url }}" class="text-sm underline">
+      {{ 'action.return_to_account_overview' | t }}
+    </a>
+  </div>
+
+  <div class="flex flex-col-reverse lg:grid lg:grid-cols-3 gap-12">
+    {% comment %} order - start {% endcomment %}
+      <div class="lg:col-span-2">
+        <div class="border p-4">
+          <div class="mb-8 sm:mb-12">
+            <h2 class="text-xl sm:text-2xl font-bold">
+              {{ 'customer.order.order' | t }} {{ order.name }}
+            </h2>
+
+            <p class="text-sm text-gray-600">
+              {{ 'customer.order.ordered_on' | t }} {{ order.created_at | date: format: 'month_day_year' }}
+            </p>
+          </div>
+
+          <div class="divide-y">
+            <div class="hidden md:grid grid-cols-8 gap-4 text-gray-600 text-sm tracking-wider uppercase pb-2 md:pr-8">
+              <div class="col-span-5">
+                {{ 'customer.order.product' | t }}
+              </div>
+
+              <div>
+                {{ 'customer.order.price' | t }}
+              </div>
+
+              <div>
+                {{ 'customer.order.quantity' | t }}
+              </div>
+
+              <div class="text-right">
+                {{ 'customer.order.total' | t }}
+              </div>
+            </div>
+
+            <div class="flex flex-col text-gray-600 md:gap-4 divide-y md:divide-y-0 md:py-4 mb-4 md:mb-8">
+              {% for line_item in order.line_items %}
+                <div class="grid md:grid-cols-8 gap-x-4 gap-y-1 md:gap-y-0 py-4 md:py-0 md:pr-8">
+                  <div class="md:col-span-5">
+                    <div>
+                      <a
+                        href="{{ line_item.product.url }}"
+                        class="text-black hover:text-gray-600 transition duration-150"
+                      >
+                        {{ line_item.title }}
+                      </a>
+                    </div>
+
+                    {% if line_item.fulfillment %}
+                      <div class="inline-block bg-gray-100 text-sm px-3 py-1 mt-1">
+                        <div>
+                          {{ 'customer.order.fulfilled_on' | t }} {{ line_item.fulfillment.created_at | date: format: 'month_day_year' }}
+                        </div>
+
+                        {% if line_item.fulfillment.tracking_url %}
+                          <div>
+                            <a
+                              href="{{ line_item.fulfillment.tracking_url }}"
+                              class="hover:text-accent transition duration-150"
+                            >
+                              {% if line_item.fulfillment.tracking_number %}
+                                {{ line_item.fulfillment.tracking_number }}
+                              {% else %}
+                                {{ 'action.track_shipment' | t }}
+                              {% endif %}
+                            </a>
+
+                            {% if line_item.fulfillment.tracking_company %}
+                              {{ 'common.via' | t }} {{ line_item.fulfillment.tracking_company }}
+                            {% endif %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  </div>
+
+                  <div class="flex md:block justify-between text-sm sm:text-base">
+                    <span class="md:hidden">{{ 'customer.order.price' | t }}</span>
+
+                    {{ line_item.price | money }}
+                  </div>
+
+                  <div class="flex md:block justify-between text-sm sm:text-base">
+                    <span class="md:hidden">{{ 'customer.order.quantity' | t }}</span>
+
+                    {{ line_item.quantity }}
+                  </div>
+
+                  <div class="flex md:block justify-between text-sm sm:text-base md:text-right">
+                    <span class="md:hidden">{{ 'customer.order.total' | t }}</span>
+
+                    {{ line_item.quantity | times: line_item.price | money }}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div>
+              <div class="flex justify-between border-b py-4 md:pr-8">
+                <div class="font-poppins font-medium">
+                  {{ 'customer.order.subtotal' | t }}
+                </div>
+
+                <div class="text-grey-dark">
+                  {{ order.line_items_subtotal_price | money }}
+                </div>
+              </div>
+
+              {% unless order.discount_applications | size == 0 %}
+                <div class="border-b py-4 md:pr-8">
+                  {% for discount_application in order.discount_applications %}
+                    {{ discount_application.title }} {{ 'common.discount' | t }} | {{ discount_application.total_allocated_amount | money }}
+                  {% endfor %}
+                </div>
+              {% endunless %}
+
+              {% unless order.shipping_methods | size == 0 %}
+                <div class="border-b py-4 md:pr-8">
+                  {% for shipping_method in order.shipping_methods %}
+                    <div>
+                      {{ 'common.shipping' | t }} ({{ shipping_method.title }}) | {{ shipping_method.price | money }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endunless %}
+
+              {% unless order.tax_lines | size == 0 %}
+                <div class="border-b py-4 md:pr-8">
+                  {% for tax_line in order.tax_lines %}
+                    <div>
+                      {{ 'common.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%) | {{ tax_line.price | money }}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endunless %}
+
+              <div class="flex justify-between py-4 md:pr-8">
+                <div class="font-poppins font-medium">
+                  {{ 'customer.order.total' | t }}
+                </div>
+
+                <div class="text-accent font-bold">
+                  {{ order.total_price | money }} {{ order.currency }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% comment %} order - end {% endcomment %}
+
+    {% comment %} sidebar - start {% endcomment %}
+      <div class="col-span-1">
+        <div class="border space-y-3 p-4 mb-6 lg:mb-8">
+          <div class="flex justify-between">
+            <div class="text-sm sm:text-base">
+              {{ 'customer.order.payment_status' | t }}
+            </div>
+
+            <div>
+              {% render 'layout-account-financial-status', order: order %}
+            </div>
+          </div>
+
+          <div class="flex justify-between">
+            <div class="text-sm sm:text-base">
+              {{ 'customer.order.fulfillment_status' | t }}
+            </div>
+
+            <div>
+              {% render 'layout-account-fulfillment-status', order: order %}
+            </div>
+          </div>
+        </div>
+
+        {% if order.billing_address %}
+          <div class="mb-6 lg:mb-8">
+            <div class="text-lg lg:text-xl font-bold pl-4 mb-4">
+              {{ 'customer.order.billing_address' | t }}
+            </div>
+
+            <div class="text-grey-dark border p-4">
+              {{ order.billing_address | format_address }}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if order.shipping_address %}
+          <div>
+            <div class="text-lg lg:text-xl font-bold pl-4 mb-4">
+              {{ 'customer.order.shipping_address' | t }}
+            </div>
+
+            <div class="text-grey-dark border p-4">
+              {{ order.shipping_address | format_address }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    {% comment %} sidebar - end {% endcomment %}
+  </div>
+</div>
