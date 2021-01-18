@@ -1,1 +1,132 @@
-<!-- account.liquid -->
+<div class="container">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4">
+    {{ 'customer.account.title' | t }}
+  </h1>
+
+  <div class="text-center mb-8 md:mb-16">
+    <a href="{{ routes.account_logout_url }}" class="text-sm underline">
+      {{ 'action.log_out' | t }}
+    </a>
+  </div>
+
+  <div class="flex flex-col-reverse lg:grid lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-3">
+      <div class="text-lg lg:text-xl font-bold mb-8">
+        {{ 'customer.account.order_history' | t }}
+      </div>
+
+      {% paginate customer.orders by 12 %}
+        <div>
+          {% if customer.orders.size > 0 %}
+            <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4 mb-4">
+              <div class="lg:col-span-2">
+                {{ 'customer.account.order_number' | t }}
+              </div>
+
+              <div class="col-span-2">
+                {{ 'customer.account.order_date' | t }}
+              </div>
+
+              <div class="col-span-2">
+                {{ 'customer.account.payment_status' | t }}
+              </div>
+
+              <div class="col-span-2">
+                {{ 'customer.account.fulfillment_status' | t }}
+              </div>
+
+              <div>
+                {{ 'customer.account.total' | t }}
+              </div>
+            </div>
+
+            {% for order in customer.orders %}
+              <div class="grid lg:grid-cols-9 gap-3 md:gap-4">
+                <div class="lg:col-span-2 flex justify-between items-center border-b lg:border-0 pb-2 lg:pb-0">
+                  <span class="lg:hidden text-accent">
+                    {{ 'customer.account.order_number' | t }}
+                  </span>
+
+                  <a
+                    href="{{ order.customer_url }}"
+                    class="border border-black px-4 py-2"
+                  >
+                    {{ order.name }}
+                  </a>
+                </div>
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center">
+                  <span class="lg:hidden">
+                    {{ 'customer.account.order_date' | t }}
+                  </span>
+
+                  {{ order.created_at | date: format: 'month_day_year' }}
+                </div>
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center">
+                  <span class="lg:hidden">
+                    {{ 'customer.account.payment_status' | t }}
+                  </span>
+
+                  {% render 'layout-account-financial-status', order: order %}
+                </div>
+
+
+                <div class="lg:col-span-2 flex justify-between items-end lg:items-center">
+                  <span class="lg:hidden">
+                    {{ 'customer.account.fulfillment_status' | t }}
+                  </span>
+
+                  {% render 'layout-account-fulfillment-status', order: order %}
+                </div>
+
+                <div class="flex justify-between items-end lg:items-center font-bold lg:font-normal">
+                  <span class="lg:hidden">
+                    {{ 'customer.account.total' | t }}
+                  </span>
+
+                  {{ order.total_price | money }}
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p class="text-gray-600">
+              {{ 'customer.account.no_orders' | t }}
+            </p>
+          {% endif %}
+        </div>
+
+        {% render 'layout-pagination', paginate: paginate %}
+      {% endpaginate %}
+    </div>
+
+    <div class="col-span-1">
+      <div class="text-lg lg:text-xl font-bold mb-6">
+        {{ 'customer.account.addresses' | t }}
+      </div>
+
+      <div class="border relative">
+        {% unless customer.default_address == blank %}
+          <div class="p-4">
+            <span class="absolute top-0 right-0 bg-black text-white text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
+              {{ 'common.default' | t }}
+            </span>
+
+            <div>
+              {{ customer.default_address | format_address }}
+            </div>
+          </div>
+        {% endunless %}
+
+        <div class="border-t p-4">
+          <a
+            href="{{ routes.account_addresses_url }}"
+            class="button button-primary w-full"
+          >
+            {{ 'action.edit_addresses' | t }} ({{ customer.addresses_count }})
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

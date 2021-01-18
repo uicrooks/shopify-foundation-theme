@@ -5,6 +5,7 @@
   "common": {
     "or": "or",
     "by": "by",
+    "default": "Default",
     "sort": "Sort",
     "product": "Product",
     "products": "Products",
@@ -32,6 +33,12 @@
     "decline": "Decline",
     "cancel": "Cancel",
     "forgot_your_password": "Forgot your password?",
+    "log_out": "Log out",
+    "edit_addresses": "Edit Addresses",
+    "add_new_address": "Add new Address",
+    "update_address": "Update Address",
+    "edit": "Edit",
+    "delete": "Delete",
     "continue_shopping": "Continue shopping",
     "subscribe": "Subscribe",
     "read_more": "Read more"
@@ -61,6 +68,17 @@
       "create_account": "Create account",
       "reset_password_notice": "We will send you an email to reset your password.",
       "reset_password_response": "Sent recovery mail"
+    },
+    "account": {
+      "title": "Account overview",
+      "order_history": "Order History",
+      "addresses": "Addresses",
+      "order_number": "Order Number",
+      "order_date": "Order Date",
+      "payment_status": "Payment Status",
+      "fulfillment_status": "Fulfillment Status",
+      "total": "Total",
+      "no_orders": "No orders"
     },
     "activate_account": {
       "title": "Activate Account"
