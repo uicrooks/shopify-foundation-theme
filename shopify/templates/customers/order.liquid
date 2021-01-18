@@ -65,7 +65,7 @@
                           <div>
                             <a
                               href="{{ line_item.fulfillment.tracking_url }}"
-                              class="hover:text-accent transition duration-150"
+                              class="hover:text-gray-600 transition duration-150"
                             >
                               {% if line_item.fulfillment.tracking_number %}
                                 {{ line_item.fulfillment.tracking_number }}
@@ -106,7 +106,7 @@
 
             <div>
               <div class="flex justify-between border-b py-4 md:pr-8">
-                <div class="font-poppins font-medium">
+                <div class="font-medium">
                   {{ 'customer.order.subtotal' | t }}
                 </div>
 
@@ -144,11 +144,11 @@
               {% endunless %}
 
               <div class="flex justify-between py-4 md:pr-8">
-                <div class="font-poppins font-medium">
+                <div class="font-medium">
                   {{ 'customer.order.total' | t }}
                 </div>
 
-                <div class="text-accent font-bold">
+                <div class="font-bold">
                   {{ order.total_price | money }} {{ order.currency }}
                 </div>
               </div>
