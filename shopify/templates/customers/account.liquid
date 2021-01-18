@@ -16,9 +16,9 @@
       </div>
 
       {% paginate customer.orders by 12 %}
-        <div>
+        <div class="space-y-4">
           {% if customer.orders.size > 0 %}
-            <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4 mb-4">
+            <div class="hidden lg:grid grid-cols-9 gap-4 border-b text-gray-600 text-sm tracking-wider uppercase pb-4">
               <div class="lg:col-span-2">
                 {{ 'customer.account.order_number' | t }}
               </div>
@@ -41,15 +41,15 @@
             </div>
 
             {% for order in customer.orders %}
-              <div class="grid lg:grid-cols-9 gap-3 md:gap-4">
+              <div class="grid lg:grid-cols-9 gap-3 md:gap-4 border lg:border-none p-4 lg:p-0">
                 <div class="lg:col-span-2 flex justify-between items-center border-b lg:border-0 pb-2 lg:pb-0">
-                  <span class="lg:hidden text-accent">
+                  <span class="lg:hidden">
                     {{ 'customer.account.order_number' | t }}
                   </span>
 
                   <a
                     href="{{ order.customer_url }}"
-                    class="border border-black px-4 py-2"
+                    class="lg:border lg:border-black lg:hover:bg-black lg:hover:text-white transition duration-150 px-4 py-2"
                   >
                     {{ order.name }}
                   </a>
@@ -107,7 +107,7 @@
 
       <div class="border relative">
         {% unless customer.default_address == blank %}
-          <div class="p-4">
+          <div class="border-b p-4">
             <span class="absolute top-0 right-0 bg-black text-white text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
               {{ 'common.default' | t }}
             </span>
@@ -118,7 +118,7 @@
           </div>
         {% endunless %}
 
-        <div class="border-t p-4">
+        <div class="p-4">
           <a
             href="{{ routes.account_addresses_url }}"
             class="button button-primary w-full"

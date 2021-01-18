@@ -1,0 +1,11 @@
+<div class="flex items-center {{ class | default: '' }}" style="{{ style | default: '' }}">
+  <div class="h-6 inline-flex justify-center items-center text-sm leading-none rounded-full pl-2 pr-3 {% if order.fulfillment_status == 'fulfilled' %}bg-green-100 text-green-800{% else %}bg-gray-100 text-gray-600{% endif %}">
+    {% if order.fulfillment_status == 'fulfilled' %}
+      {% render 'icon-check', class: 'w-4 h-auto mr-1' %}
+    {% else %}
+      {% render 'icon-cancel', class: 'w-4 h-auto mr-1' %}
+    {% endif %}
+
+    {{ order.fulfillment_status_label }}
+  </div>
+</div>

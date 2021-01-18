@@ -1,0 +1,34 @@
+
+<div class="flex items-center {{ class | default: '' }}" style="{{ style | default: '' }}">
+  {% assign financial_status_class = 'h-6 inline-flex justify-center items-center text-sm leading-none rounded-full pl-2 pr-3' %}
+  {% assign financial_status_icon_class = 'w-5 flex-shrink-0 mr-1' %}
+
+  {% case order.financial_status %}
+    {% when 'pending' %}
+      <div class="{{ financial_status_class }} bg-gray-100 text-gray-600">
+      {% render 'icon-dots', class: financial_status_icon_class %}
+    {% when 'authorized' %}
+      <div class="{{ financial_status_class }} bg-green-100 text-green-800">
+      {% render 'icon-check', class: financial_status_icon_class %}
+    {% when 'paid' %}
+      <div class="{{ financial_status_class }} bg-green-100 text-green-800">
+      {% render 'icon-check', class: financial_status_icon_class %}
+    {% when 'partially_paid' %}
+      <div class="{{ financial_status_class }} bg-gray-100 text-gray-600">
+      {% render 'icon-dots', class: financial_status_icon_class %}
+    {% when 'refunded' %}
+      <div class="{{ financial_status_class }} bg-green-100 text-green-800">
+      {% render 'icon-back', class: financial_status_icon_class %}
+    {% when 'partially_refunded' %}
+      <div class="{{ financial_status_class }} bg-gray-100 text-gray-600">
+      {% render 'icon-back', class: financial_status_icon_class %}
+    {% when 'voided' %}
+      <div class="{{ financial_status_class }} bg-red-100 text-red-800">
+      {% render 'icon-cancel', class: financial_status_icon_class %}
+  {% endcase %}
+
+    <span>
+      {{ order.financial_status_label }}
+    </span>
+  </div>
+</div>
