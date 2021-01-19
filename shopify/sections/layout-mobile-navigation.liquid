@@ -13,10 +13,16 @@
 
     <a
       href="{{ routes.cart_url }}"
-      class="{{ link_class }}"
+      class="{{ link_class }} relative"
     >
       {% render 'icon-cart', class: icon_class %}
       {{ 'action.cart' | t }}
+
+      {% if cart.item_count > 0 %}
+        <div class="w-5 h-5 flex justify-center items-center bg-black text-white text-xs border border-white rounded-full absolute top-0 right-0">
+          {{ cart.item_count }}
+        </div>
+      {% endif %}
     </a>
 
     {% if shop.customer_accounts_enabled %}
