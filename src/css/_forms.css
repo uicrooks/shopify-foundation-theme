@@ -16,5 +16,5 @@ textarea {
 }
 
 select {
-  @apply bg-white;
+  @apply bg-white cursor-pointer;
 }
