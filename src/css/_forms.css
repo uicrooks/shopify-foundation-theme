@@ -1,4 +1,4 @@
-label {
+label:not([type="checkbox"]):not([type="radio"]) {
   @apply text-sm select-none mb-2;
 
   @screen sm {
@@ -6,7 +6,7 @@ label {
   }
 }
 
-input {
+input:not([type="checkbox"]):not([type="radio"]) {
   @apply h-12;
 }
 

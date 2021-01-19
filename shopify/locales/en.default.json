@@ -102,6 +102,13 @@
       "billing_address": "Billing Address",
       "shipping_address": "Shipping Address"
     },
+    "addresses": {
+      "title": "Addresses",
+      "add_new_address": "Add new Address",
+      "set_as_default_address": "Set as default Address",
+      "edit_address": "Edit Address",
+      "response": "Address updated"
+    },
     "activate_account": {
       "title": "Activate Account"
     },

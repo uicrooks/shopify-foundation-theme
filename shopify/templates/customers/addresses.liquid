@@ -1,1 +1,129 @@
-<!-- addresses.liquid -->
+<div class="container max-w-screen-xl">
+  <h1 class="text-2xl md:text-3xl font-bold text-center mb-4">
+    {{ 'customer.addresses.title' | t }}
+  </h1>
+
+  <div class="text-center mb-8 md:mb-16">
+    <a href="{{ routes.account_url }}" class="text-sm underline">
+      {{ 'action.return_to_account_overview' | t }}
+    </a>
+  </div>
+
+  <div>
+    <renderless-addresses :addresses="{{ customer.addresses | json | replace: '"', "'" }}">
+      <div slot-scope="{ currentlyEditedAddress, visibleForm, showForm, editAddress, cancelEdit }">
+        <div class="flex flex-col-reverse lg:grid lg:grid-cols-3 gap-4 md:gap-8">
+          {% comment %} form - start {% endcomment %}
+            <div class="address-form lg:col-span-2 pt-4 lg:pt-0">
+              <div class="text-lg lg:text-xl font-bold mb-6">
+                <div v-if="!currentlyEditedAddress">
+                  {{ 'customer.addresses.add_new_address' | t }}
+                </div>
+
+                <div v-else>
+                  {{ 'customer.addresses.edit_address' | t }}
+                </div>
+              </div>
+
+              {% comment %} add button - start {% endcomment %}
+                <div
+                  v-if="!visibleForm"
+                  class="h-64 flex justify-center items-center border border-dashed rounded-sm p-4 sm:p-8"
+                >
+                  <button
+                    @click="showForm"
+                    class="button button-primary"
+                  >
+                    {{ 'action.add_new_address' | t }}
+                  </button>
+                </div>
+              {% comment %} add button - end {% endcomment %}
+
+              {% comment %} forms - start {% endcomment %}
+                <div
+                  v-show="visibleForm"
+                  class="border overflow-hidden p-6 md:p-8"
+                >
+                  <div
+                    v-show="visibleForm && !currentlyEditedAddress"
+                    key="form-new"
+                  >
+                    {% form 'customer_address', customer.new_address %}
+                      {% render 'layout-account-address-form' %}
+                    {% endform %}
+                  </div>
+
+                  {% for address in customer.addresses %}
+                    <div
+                      v-show="currentlyEditedAddress && currentlyEditedAddress.id === {{ address.id }}"
+                      key="{{ address.id }}"
+                    >
+                      {% form 'customer_address', address %}
+                        {% if form.posted_successfully? %}
+                          {% assign translation_response = 'customer.addresses.response' | t %}
+
+                          {% render 'layout-message',
+                            type: 'success'
+                            text: translation_response
+                            class: 'mb-8'
+                          %}
+                        {% endif %}
+
+                        {% render 'layout-account-address-form', form: form %}
+                      {% endform %}
+                    </div>
+                  {% endfor %}
+                </div>
+              {% comment %} forms - end {% endcomment %}
+            </div>
+          {% comment %} form - end {% endcomment %}
+
+          {% comment %} addresses - start {% endcomment %}
+            <div class="col-span-1">
+              <div class="text-lg lg:text-xl font-bold mb-6">
+                {{ 'customer.account.addresses' | t }}
+              </div>
+
+              <div class="space-y-6 lg:space-y-10">
+                {% for address in customer.addresses %}
+                  <div class="relative border">
+                    {% if address == customer.default_address %}
+                      <span class="absolute top-0 right-0 bg-black text-white text-sm tracking-widest uppercase rounded-full px-3 py-1 -mt-4 mr-4">
+                        {{ 'common.default' | t }}
+                      </span>
+                    {% endif %}
+
+                    <div class="text-gray-600 border-b p-4">
+                      {{ address | format_address }}
+                    </div>
+
+                    <div class="w-full flex gap-4 p-4">
+                      <button
+                        @click="editAddress({{ address.id }})"
+                        class="button button-primary w-1/2"
+                      >
+                        {{ 'action.edit' | t }}
+                      </button>
+
+                      <form
+                        method="post"
+                        action="/account/addresses/{{ address.id }}"
+                        class="w-1/2"
+                      >
+                        <input type="hidden" name="_method" value="delete" />
+
+                        <button class="button button-secondary w-full">
+                          {{ 'action.delete' | t }}
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% comment %} addresses - end {% endcomment %}
+        </div>
+      </div>
+    </renderless-addresses>
+  </div>
+</div>

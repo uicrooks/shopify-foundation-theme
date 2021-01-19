@@ -1,0 +1,194 @@
+<div class="flex flex-wrap md:flex-nowrap md:gap-x-6">
+  <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+    <label
+      for="ContactFormFirstName_{{ form.id }}"
+      class="block"
+    >
+      {{ 'form.first_name' | t }}*
+    </label>
+
+    <input
+      type="text"
+      name="address[first_name]"
+      id="ContactFormFirstName_{{ form.id }}"
+      value="{{ form.first_name }}"
+      class="w-full"
+      required
+    >
+  </div>
+
+  <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+    <label
+      for="AddressLastName_{{ form.id }}"
+      class="block"
+    >
+      {{ 'form.last_name' | t }}*
+    </label>
+
+    <input
+      type="text"
+      name="address[last_name]"
+      id="AddressLastName_{{ form.id }}"
+      value="{{ form.last_name }}"
+      class="w-full"
+      required
+    >
+  </div>
+</div>
+
+<div class="mb-4 sm:mb-6">
+  <label
+    for="AddressCompany_{{ form.id }}"
+    class="block"
+  >
+    {{ 'form.company' | t }}
+  </label>
+
+  <input
+    type="text"
+    name="address[company]"
+    id="AddressCompany_{{ form.id }}"
+    value="{{ form.company }}"
+    class="w-full"
+  >
+</div>
+
+<div class="mb-4 sm:mb-6">
+  <label
+    for="AddressAddress1_{{ form.id }}"
+    class="block"
+  >
+    {{ 'form.address' | t }}*
+  </label>
+
+  <input
+    type="text"
+    name="address[address1]"
+    id="AddressAddress1_{{ form.id }}"
+    value="{{ form.address1 }}"
+    class="w-full"
+    required
+  >
+</div>
+
+<div class="mb-4 sm:mb-6">
+  <label
+    for="AddressAddress2_{{ form.id }}"
+    class="block"
+  >
+    {{ 'form.apartment' | t }}
+  </label>
+
+  <input
+    type="text"
+    name="address[address2]"
+    id="AddressAddress2_{{ form.id }}"
+    value="{{ form.address2 }}"
+    class="w-full"
+  >
+</div>
+
+<div class="flex flex-wrap md:flex-nowrap md:gap-x-6">
+  <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+    <label
+      for="AddressCity_{{ form.id }}"
+      class="block"
+    >
+      {{ 'form.city' | t }}*
+    </label>
+
+    <input
+      type="text"
+      name="address[city]"
+      id="AddressCity_{{ form.id }}"
+      value="{{ form.city }}"
+      class="w-full"
+      required
+    >
+  </div>
+
+  <div class="w-full md:w-1/2 mb-4 sm:mb-6">
+    <label
+      for="AddressCountry_{{ form.id }}"
+      class="block"
+    >
+      {{ 'form.country' | t }}*
+    </label>
+
+    <select
+      v-select-option="'{{ form.country }}'"
+      name="address[country]"
+      id="AddressCountry_{{ form.id }}"
+      class="w-full h-12 border px-3 py-2"
+      required
+    >
+      {{ country_option_tags }}
+    </select>
+  </div>
+</div>
+
+<div class="mb-4 sm:mb-6">
+  <label
+    for="AddressZip_{{ form.id }}"
+    class="block"
+  >
+    {{ 'form.zip_code' | t }}*
+  </label>
+
+  <input
+    type="number"
+    name="address[zip]"
+    id="AddressZip_{{ form.id }}"
+    value="{{ form.zip }}"
+    class="w-full"
+    required
+  >
+</div>
+
+<div class="mb-6 sm:mb-10">
+  <label
+    for="AddressPhone_{{ form.id }}"
+    class="block"
+  >
+    {{ 'form.phone' | t }}
+  </label>
+
+  <input
+    type="tel"
+    name="address[phone]"
+    id="AddressPhone_{{ form.id }}"
+    value="{{ form.phone }}"
+    class="w-full"
+  >
+</div>
+
+<div class="mb-4 sm:mb-6">
+  <label for="AddressDefault_{{ form.id }}" class="checkbox">
+    <input type="checkbox" name="address[default]" id="AddressDefault_{{ form.id }}" value="1" {% if customer.default_address == blank %}checked{% endif %}>
+
+    {{ 'customer.addresses.set_as_default_address' | t }}
+  </label>
+</div>
+
+<div class="flex flex-col md:flex-row justify-between md:items-center">
+  <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+    <button class="button button-primary">
+      {% if form.id %}
+        {{ 'action.update_address' | t }}
+      {% else %}
+        {{ 'action.add_new_address' | t }}
+      {% endif %}
+    </button>
+
+    <button
+      @click.prevent="cancelEdit"
+      class="button button-secondary"
+    >
+      {{ 'action.cancel' | t }}
+    </button>
+  </div>
+
+  <div class="text-sm text-gray-600 mt-8 md:mt-0">
+    * {{ 'form.required' | t }}
+  </div>
+</div>
