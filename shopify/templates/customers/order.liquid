@@ -110,7 +110,7 @@
                   {{ 'customer.order.subtotal' | t }}
                 </div>
 
-                <div class="text-grey-dark">
+                <div class="text-gray-600">
                   {{ order.line_items_subtotal_price | money }}
                 </div>
               </div>
@@ -188,7 +188,7 @@
               {{ 'customer.order.billing_address' | t }}
             </div>
 
-            <div class="text-grey-dark border p-4">
+            <div class="text-gray-600 border p-4">
               {{ order.billing_address | format_address }}
             </div>
           </div>
@@ -200,7 +200,7 @@
               {{ 'customer.order.shipping_address' | t }}
             </div>
 
-            <div class="text-grey-dark border p-4">
+            <div class="text-gray-600 border p-4">
               {{ order.shipping_address | format_address }}
             </div>
           </div>
