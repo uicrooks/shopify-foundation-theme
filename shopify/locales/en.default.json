@@ -13,6 +13,8 @@
     "price": "Price",
     "quantity": "Quantity",
     "total": "Total",
+    "sale": "Sale",
+    "sold_out": "Sold out",
     "no_products": "No products"
   },
   "action": {
@@ -42,6 +44,7 @@
     "update_address": "Update Address",
     "edit": "Edit",
     "delete": "Delete",
+    "add_to_cart": "Add to cart",
     "continue_shopping": "Continue shopping",
     "track_shipment": "Track shipment",
     "subscribe": "Subscribe",

@@ -17,7 +17,7 @@
 
     {% if product.compare_at_price %}
       <div class="bg-red-500 text-white text-sm tracking-wider uppercase absolute top-0 left-0 px-2 py-1">
-        sale
+        {{ 'common.sale' | t }}
       </div>
     {% endif %}
   </a>
@@ -43,7 +43,7 @@
       </div>
     {% else %}
       <div>
-        Sold out
+        {{ 'common.sold_out' | t }}
       </div>
     {% endif %}
   </div>

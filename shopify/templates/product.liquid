@@ -40,67 +40,72 @@
     {% endif %}
 
     {% if product.available %}
-      <div class="flex">
-        <span class="{% if product.compare_at_price %}text-red-500{% endif %}">
+      <div class="flex gap-3 mb-6">
+        <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
           {{ product.price | money }}
         </span>
 
         {% if product.compare_at_price %}
-          <del class="ml-2">
+          <del class="text-lg">
             {{ product.compare_at_price | money }}
           </del>
 
           <div class="bg-red-500 text-white text-sm tracking-wider uppercase px-2 py-1">
-            sale
+            {{ 'common.sale' | t }}
           </div>
         {% endif %}
       </div>
     {% else %}
-      <div>
-        Sold out
+      <div class="mb-6">
+        {{ 'common.sold_out' | t }}
       </div>
     {% endif %}
 
     {% form 'product', product %}
-      <input
-        type="number"
-        name="quantity"
-        value="1"
-        min="1"
-        pattern="[0-9]*"
-      >
+      <div class="flex gap-4 mb-6">
+        <input
+          type="number"
+          name="quantity"
+          value="1"
+          min="1"
+          pattern="[0-9]*"
+          class="w-16"
+        >
 
-      <div class="{% unless product.variants.size > 1 %}hidden{% endunless %}">
-        <select name="id">
-          {% for variant in product.variants %}
-            {% if variant.available %}
-              <option value="{{ variant.id }}">
-                {{ variant.title }} - {{ variant.price | money_with_currency }}
-              </option>
-            {% else %}
-              <option disabled="disabled">
-                {{ variant.title }} - Sold out
-              </option>
-            {% endif %}
-          {% endfor %}
-        </select>
+        <div class="{% unless product.variants.size > 1 %}hidden{% endunless %}">
+          <select name="id" class="h-12 border p-2">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+                <option value="{{ variant.id }}">
+                  {{ variant.title }} - {{ variant.price | money_with_currency }}
+                </option>
+              {% else %}
+                <option disabled="disabled">
+                  {{ variant.title }} - {{ 'common.sold_out' | t }}
+                </option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4">
-        <div>
+        <div class="button-shopify-buy-it-now">
           {{ form | payment_button }}
         </div>
 
-        <button name="add" class="button button-secondary">
-          Add to cart
-        </button>
+        <div>
+          <button name="add" class="button button-secondary w-full h-12">
+            {{ 'action.add_to_cart' | t }}
+          </button>
+        </div>
       </div>
     {% endform %}
 
     {% if product.description %}
-      <p class="mt-16">
+      <div class="mt-4">
         {{ product.description }}
-      </p>
+      </div>
     {% endif %}
   </div>
 </div>
