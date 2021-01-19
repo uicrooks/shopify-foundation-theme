@@ -141,6 +141,7 @@
   },
   "footer": {
     "menu": "Quick links",
-    "social": "Social"
+    "social": "Social",
+    "payment_methods": "Payment methods"
   }
 }

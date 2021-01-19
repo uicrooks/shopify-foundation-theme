@@ -1,5 +1,5 @@
 <div class="border-t border-gray-200 pt-12 pb-24">
-  <div class="container grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+  <div class="container grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-x-4 gap-y-8">
     <div>
       <div class="text-lg font-bold mb-3">
         {{ 'footer.menu' | t }}
@@ -41,6 +41,20 @@
             social_youtube_visible: section.settings.social_youtube_visible
             social_youtube_link: section.settings.social_youtube_link
           %}
+      </div>
+    {% endif %}
+
+    {% if shop.enabled_payment_types != blank %}
+      <div class="col-span-2">
+        <div class="text-lg font-bold mb-3">
+          {{ 'footer.payment_methods' | t }}
+        </div>
+
+        <div class="flex flex-wrap space-x-2">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class: 'w-12 h-auto mb-2' }}
+          {% endfor %}
+        </div>
       </div>
     {% endif %}
   </div>
