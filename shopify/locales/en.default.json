@@ -142,6 +142,7 @@
   "footer": {
     "menu": "Quick links",
     "social": "Social",
+    "settings": "Settings",
     "payment_methods": "Payment methods"
   }
 }

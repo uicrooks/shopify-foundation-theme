@@ -44,6 +44,27 @@
       </div>
     {% endif %}
 
+    {% assign enabled_locales = shop.enabled_locales | size %}
+    {% assign enabled_currencies = shop.enabled_currencies | size %}
+
+    {% if enabled_locales > 1 or enabled_currencies > 1 %}
+      <div>
+        <div class="text-lg font-bold mb-3">
+          {{ 'footer.settings' | t }}
+        </div>
+
+        <div class="flex space-x-2">
+          {% if enabled_locales > 1 %}
+            {% render 'layout-select-locale' %}
+          {% endif %}
+
+          {% if enabled_currencies > 1 %}
+            {% render 'layout-select-currency' %}
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
     {% if shop.enabled_payment_types != blank %}
       <div class="col-span-2">
         <div class="text-lg font-bold mb-3">

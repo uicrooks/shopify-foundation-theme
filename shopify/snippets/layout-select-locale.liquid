@@ -1,0 +1,16 @@
+{% form 'localization', class: 'select' %}
+  <select
+    @change="submit"
+    name="locale_code"
+    class="border p-1"
+  >
+    {% for locale in form.available_locales %}
+      <option
+        value="{{ locale.iso_code }}"
+        {% if locale.iso_code == form.current_locale.iso_code %}selected="true"{% endif %}
+      >
+        {{ locale.endonym_name }}
+      </option>
+    {% endfor %}
+  </select>
+{% endform %}

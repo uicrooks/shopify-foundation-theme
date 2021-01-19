@@ -1,0 +1,16 @@
+{% form 'currency', class: 'select' %}
+  <select
+    @change="submit"
+    name="currency"
+    class="border p-1"
+  >
+    {% for currency in shop.enabled_currencies %}
+      <option
+        value="{{ currency.iso_code }}"
+        {% if currency == cart.currency %}selected="true"{% endif %}
+      >
+        {{ currency.iso_code }} {{ currency.symbol }}
+      </option>
+    {% endfor %}
+  </select>
+{% endform %}
