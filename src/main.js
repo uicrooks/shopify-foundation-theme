@@ -4,6 +4,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import VueScreen from 'vue-screen'
 import { VLazyImagePlugin } from 'v-lazy-image'
 import './css/main.css'
 
@@ -90,6 +91,7 @@ Vue.prototype.$axios = axios
  * vue plugins
  * extend with additional features
  */
+Vue.use(VueScreen)
 Vue.use(VLazyImagePlugin)
 
 /**

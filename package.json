@@ -34,6 +34,7 @@
     "tailwindcss": "^2.0.1",
     "v-lazy-image": "^1.4.0",
     "vue": "^2.6.12",
+    "vue-screen": "^1.5.3",
     "vuex": "^3.6.0"
   },
   "devDependencies": {
