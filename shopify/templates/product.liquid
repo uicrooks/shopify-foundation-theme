@@ -40,20 +40,30 @@
     {% endif %}
 
     {% if product.available %}
-      <div class="flex gap-3 mb-10">
-        <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
-          {{ product.price | money }}
-        </span>
+      <div class="mb-10">
+        <div class="flex gap-3">
+          <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
+            {{ product.price | money }}
+          </span>
 
-        {% if product.compare_at_price %}
-          <del class="text-lg">
-            {{ product.compare_at_price | money }}
-          </del>
+          {% if product.compare_at_price %}
+            <del class="text-lg">
+              {{ product.compare_at_price | money }}
+            </del>
 
-          <div class="bg-red-500 text-white text-sm tracking-wider uppercase px-2 py-1">
-            {{ 'common.sale' | t }}
-          </div>
-        {% endif %}
+            <div class="bg-red-500 text-white text-sm tracking-wider uppercase px-2 py-1">
+              {{ 'common.sale' | t }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="text-gray-600 text-sm">
+          {% if shop.taxes_included %}
+            {{ 'common.including_tax' | t }}
+          {% else %}
+            {{ 'common.excluding_tax' | t }}
+          {% endif %}
+        </div>
       </div>
     {% else %}
       <div class="mb-6">

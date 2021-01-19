@@ -15,7 +15,9 @@
     "total": "Total",
     "sale": "Sale",
     "sold_out": "Sold out",
-    "no_products": "No products"
+    "no_products": "No products",
+    "including_tax": "Including VAT",
+    "excluding_tax": "Excluding VAT"
   },
   "action": {
     "search": "Search",

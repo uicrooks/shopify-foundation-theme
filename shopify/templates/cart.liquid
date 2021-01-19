@@ -36,6 +36,14 @@
           <span class="inline-block">{{ cart.total_price | money_with_currency }}</span>
         </div>
 
+        <div class="text-gray-600 text-sm">
+          {% if shop.taxes_included %}
+            {{ 'common.including_tax' | t }}
+          {% else %}
+            {{ 'common.excluding_tax' | t }}
+          {% endif %}
+        </div>
+
         <button
           name="checkout"
           class="button button-primary mt-8"
