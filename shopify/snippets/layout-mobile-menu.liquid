@@ -1,0 +1,18 @@
+<div v-if="$store.state['mobile-menu'].visible" class="w-full max-w-screen-md h-full md:hidden bg-white border-l fixed top-0 right-0 {{ class | default: '' }}" style="{{ style | default: '' }}">
+  <div class="border-b p-4">
+    <button
+      class="flex justify-center items-center"
+      @click="$store.dispatch('mobile-menu/hide')"
+    >
+      {% render 'icon-cancel', class: 'w-6 h-auto mr-1' %}
+
+      <div>
+        {{ 'action.close' | t }}
+      </div>
+    </button>
+  </div>
+
+  <div class="p-4">
+    {% render 'layout-menu', class: 'flex flex-col items-start gap-4' %}
+  </div>
+</div>

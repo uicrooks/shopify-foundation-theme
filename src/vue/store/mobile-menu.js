@@ -2,7 +2,7 @@
  * state
  */
 const state = {
-  visible: false
+  visible: true
 }
 
 /**

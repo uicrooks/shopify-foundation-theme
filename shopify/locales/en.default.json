@@ -33,6 +33,7 @@
     "activate": "Activate",
     "decline": "Decline",
     "cancel": "Cancel",
+    "close": "Close",
     "return_to_account_overview": "Return to account overview",
     "forgot_your_password": "Forgot your password?",
     "log_out": "Log out",
