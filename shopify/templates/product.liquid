@@ -12,18 +12,18 @@
 
     <div class="flex gap-4 mt-4">
       {% for image in product.images %}
-        <div class="w-24 h-24">
+        <div class="w-20 md:w-24 h-20 md:h-24">
           <v-lazy-image
             sizes="
-              (min-width: 768px) 450px,
-              200px
+              (min-width: 768px) 96px,
+              80px
             "
             srcset="
-              {{ image.src | img_url: '200x' }} 200w,
-              {{ image.src | img_url: '450x' }} 450w
+              {{ image.src | img_url: '80x' }} 80w,
+              {{ image.src | img_url: '96x' }} 96w
             "
-            src="{{ image.src | img_url: '400x' }}"
-            src-placeholder="{{ image.src | img_url: '50x' }}"
+            src="{{ image.src | img_url: '96x' }}"
+            src-placeholder="{{ image.src | img_url: '25x' }}"
             alt="{{ image.alt | escape }}"
             class="w-full h-full object-cover object-center"
           ></v-lazy-image>
