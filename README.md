@@ -22,6 +22,12 @@
 Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab), [Vue](https://vuejs.org) and [Tailwind CSS](https://tailwindcss.com).
 <!-- title / description (end) -->
 
+<!-- preview (start) -->
+<img src=".github/img/preview.png">
+<!-- preview (end) -->
+
+<!-- docs (start) -->
 ### Docs
 
 Everything from the [Shopify Theme Lab docs](https://github.com/uicrooks/shopify-theme-lab) applies to this project, since it was built with Shopify Theme Lab.
+<!-- docs (end) -->
