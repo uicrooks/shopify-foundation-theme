@@ -2,7 +2,7 @@
   "name": "shopify-foundation-theme",
   "description": "Modern Shopify theme using Shopify Theme Lab, Liquid, Vue and Tailwind CSS",
   "author": "Sergej Samsonenko <contact@sergej.codes>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "config": {
     "reloadr": {
