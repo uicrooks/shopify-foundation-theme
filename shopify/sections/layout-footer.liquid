@@ -10,7 +10,7 @@
           <div>
             <a
               href="{{ link.url }}"
-              class="text-gray-600"
+              class="text-gray-600 hover:text-black transition duration-150"
             >
               {{ link.title }}
             </a>
@@ -31,7 +31,6 @@
         </div>
 
         {% render 'layout-social',
-            class: 'text-gray-600'
             social_instagram_visible: section.settings.social_instagram_visible
             social_instagram_link: section.settings.social_instagram_link
             social_twitter_visible: section.settings.social_twitter_visible

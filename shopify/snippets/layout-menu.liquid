@@ -2,7 +2,7 @@
   {% for link in linklists.main-menu.links %}
     <a
       href="{{ link.url }}"
-      class="inline-block text-lg leading-tight border-b {% if link.active %}border-black{% else %}border-transparent{% endif %}"
+      class="inline-block text-lg leading-tight border-b transition duration-150 {% if link.active %}border-black{% else %}border-transparent hover:border-black{% endif %}"
     >
       {{ link.title }}
     </a>
