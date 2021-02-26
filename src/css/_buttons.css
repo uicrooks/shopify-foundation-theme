@@ -10,7 +10,7 @@
   @apply bg-black border-black text-white;
 
   &:hover {
-    @apply bg-gray-800 border-gray-800;
+    @apply bg-gray-700 border-gray-800;
   }
 }
 
@@ -28,8 +28,8 @@
     @apply h-12 bg-black border-black text-white border text-base font-medium text-center rounded-sm transition duration-150 px-6 py-2;
 
     &:hover {
-      background: theme('colors.gray.800') !important;
-      border-color: theme('colors.gray.800') !important;
+      background: theme('colors.gray.700') !important;
+      border-color: theme('colors.gray.700') !important;
     }
   }
 }
