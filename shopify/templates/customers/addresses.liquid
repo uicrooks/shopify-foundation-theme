@@ -10,8 +10,11 @@
   </div>
 
   <div>
-    <renderless-addresses :addresses="{{ customer.addresses | json | replace: '"', "'" }}">
-      <div slot-scope="{ currentlyEditedAddress, visibleForm, showForm, editAddress, cancelEdit }">
+    <renderless-addresses
+      v-slot="{ currentlyEditedAddress, visibleForm, showForm, editAddress, cancelEdit }"
+      :addresses="{{ customer.addresses | json | replace: '"', "'" }}"
+    >
+      <div>
         <div class="flex flex-col-reverse lg:grid lg:grid-cols-3 gap-4 md:gap-8">
           {% comment %} form - start {% endcomment %}
             <div class="address-form lg:col-span-2 pt-4 lg:pt-0">

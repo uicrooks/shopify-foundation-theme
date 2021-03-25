@@ -3,12 +3,13 @@
 
 <div class="container max-w-screen-xl grid md:grid-cols-2 gap-8">
   <renderless-product-gallery
+    v-slot="{ initialRender, currentImage, switchImage }"
     :featured-image="{
       url: '{{ featured_image | img_url: '750x' }}',
       alt: '{{ featured_image.alt | escape }}'
     }"
   >
-    <div slot-scope="{ initialRender, currentImage, switchImage }">
+    <div>
       <div>
         <v-lazy-image
           v-if="initialRender"
