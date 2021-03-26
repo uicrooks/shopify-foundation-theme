@@ -5,6 +5,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 
+@import "_custom-fonts";
 @import "_buttons";
 @import "_forms";
 @import "_mobile-navigation";

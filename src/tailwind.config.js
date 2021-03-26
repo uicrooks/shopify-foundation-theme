@@ -9,8 +9,14 @@ const path = require('path')
 module.exports = {
   theme: {
     extend: {
+      colors: {
+        'persian-green': {
+          DEFAULT: '#00ab84'
+        } 
+      },
       fontFamily: {
         sans: [
+          'Domaine-Display',
           'Inter',
           'system-ui',
           '-apple-system',
