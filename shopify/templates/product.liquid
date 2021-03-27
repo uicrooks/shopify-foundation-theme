@@ -31,6 +31,8 @@
 
       <div class="flex gap-4 mt-4">
         {% for image in product.images %}
+          <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
+
           <button
             class="w-20 md:w-24 h-20 md:h-24"
             data-url="{{ image.src | img_url: '750x' }}"
