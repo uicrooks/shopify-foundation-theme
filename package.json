@@ -2,7 +2,7 @@
   "name": "shopify-foundation-theme",
   "description": "Modern Shopify theme using Shopify Theme Lab, Liquid, Vue and Tailwind CSS",
   "author": "Sergej Samsonenko <contact@sergej.codes>",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "config": {
     "reloader": {
@@ -52,10 +52,9 @@
     "eslint": "^7.24.0",
     "eslint-plugin-vue": "^7.9.0",
     "eslint-webpack-plugin": "^2.5.4",
-    "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^1.5.0",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.2.10",
+    "postcss": "^8.2.12",
     "postcss-import": "^14.0.1",
     "postcss-loader": "^5.2.0",
     "postcss-preset-env": "^6.7.0",
@@ -68,7 +67,7 @@
     "url-loader": "^4.1.1",
     "vue-loader": "^15.9.6",
     "vue-template-compiler": "^2.6.12",
-    "webpack": "^5.34.0",
+    "webpack": "^5.35.0",
     "webpack-cli": "^4.6.0",
     "webpack-merge": "^5.7.3"
   }
