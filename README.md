@@ -23,7 +23,7 @@ Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](
 <!-- title / description (end) -->
 
 <!-- preview (start) -->
-<img src=".github/img/preview.png">
+<img src=".github/img/preview.png" width="100%">
 <!-- preview (end) -->
 
 <!-- docs (start) -->
