@@ -11,7 +11,7 @@
 
   <div>
     <renderless-addresses
-      v-slot="{ currentlyEditedAddress, visibleForm, showForm, editAddress, cancelEdit }"
+      v-slot="{ visibleForm, currentlyEditedAddress, showForm, editAddress, cancelEdit }"
       :addresses="{{ customer.addresses | json | replace: '"', "'" }}"
     >
       <div>
@@ -19,7 +19,7 @@
           {% comment %} form - start {% endcomment %}
             <div class="address-form lg:col-span-2 pt-4 lg:pt-0">
               <div class="text-lg lg:text-xl font-bold mb-6">
-                <div v-if="!currentlyEditedAddress">
+                <div v-if="!currentlyEditedAddress.value">
                   {{ 'customer.addresses.add_new_address' | t }}
                 </div>
 
@@ -30,7 +30,7 @@
 
               {% comment %} add button - start {% endcomment %}
                 <div
-                  v-if="!visibleForm"
+                  v-if="!visibleForm.value"
                   class="h-64 flex justify-center items-center border border-dashed rounded-sm p-4 sm:p-8"
                 >
                   <button
@@ -44,11 +44,11 @@
 
               {% comment %} forms - start {% endcomment %}
                 <div
-                  v-show="visibleForm"
+                  v-show="visibleForm.value"
                   class="border overflow-hidden p-6 md:p-8"
                 >
                   <div
-                    v-show="visibleForm && !currentlyEditedAddress"
+                    v-show="visibleForm.value && !currentlyEditedAddress.value"
                     key="form-new"
                   >
                     {% form 'customer_address', customer.new_address %}
@@ -58,7 +58,7 @@
 
                   {% for address in customer.addresses %}
                     <div
-                      v-show="currentlyEditedAddress && currentlyEditedAddress.id === {{ address.id }}"
+                      v-show="currentlyEditedAddress.value && currentlyEditedAddress.value.id === {{ address.id }}"
                       key="{{ address.id }}"
                     >
                       {% form 'customer_address', address %}
