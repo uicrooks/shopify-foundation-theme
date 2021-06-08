@@ -1,0 +1,31 @@
+/**
+ * slide-from-left
+ */
+.slide-from-left-enter-active {
+  @apply transition duration-200;
+}
+
+.slide-from-left-enter-from {
+  @apply transform -translate-x-32 opacity-0;
+}
+
+.slide-from-left-leave-from,
+.slide-from-left-leave-active,
+.slide-from-left-leave-to {
+  @apply absolute opacity-0;
+}
+
+/**
+ * form-fade
+ */
+.form-fade-enter-active {
+  @apply transition duration-200;
+}
+
+.form-fade-enter-from {
+  @apply opacity-0;
+}
+
+.form-fade-leave-to {
+  @apply absolute opacity-0;
+}

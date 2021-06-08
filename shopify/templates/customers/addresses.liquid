@@ -19,65 +19,72 @@
           {% comment %} form - start {% endcomment %}
             <div class="address-form lg:col-span-2 pt-4 lg:pt-0">
               <div class="text-lg lg:text-xl font-bold mb-6">
-                <div v-if="!currentlyEditedAddress.value">
-                  {{ 'customer.addresses.add_new_address' | t }}
-                </div>
-
-                <div v-else>
-                  {{ 'customer.addresses.edit_address' | t }}
-                </div>
-              </div>
-
-              {% comment %} add button - start {% endcomment %}
-                <div
-                  v-if="!visibleForm.value"
-                  class="h-64 flex justify-center items-center border border-dashed rounded-sm p-4 sm:p-8"
-                >
-                  <button
-                    @click="showForm"
-                    class="button button-primary"
-                  >
-                    {{ 'action.add_new_address' | t }}
-                  </button>
-                </div>
-              {% comment %} add button - end {% endcomment %}
-
-              {% comment %} forms - start {% endcomment %}
-                <div
-                  v-show="visibleForm.value"
-                  class="border overflow-hidden p-6 md:p-8"
-                >
-                  <div
-                    v-show="visibleForm.value && !currentlyEditedAddress.value"
-                    key="form-new"
-                  >
-                    {% form 'customer_address', customer.new_address %}
-                      {% render 'layout-account-address-form' %}
-                    {% endform %}
+                <transition name="slide-from-left">
+                  <div v-if="!currentlyEditedAddress.value" key="new">
+                    {{ 'customer.addresses.add_new_address' | t }}
                   </div>
 
-                  {% for address in customer.addresses %}
-                    <div
-                      v-show="currentlyEditedAddress.value && currentlyEditedAddress.value.id === {{ address.id }}"
-                      key="{{ address.id }}"
+                  <div v-else key="edit">
+                    {{ 'customer.addresses.edit_address' | t }}
+                  </div>
+                </transition>
+              </div>
+
+              <transition-group name="form-fade">
+                {% comment %} add button - start {% endcomment %}
+                  <div
+                    v-if="!visibleForm.value"
+                    key="button-add-new-address"
+                    class="h-64 flex justify-center items-center border border-dashed rounded-sm p-4 sm:p-8"
+                  >
+                    <button
+                      @click="showForm"
+                      class="button button-primary"
                     >
-                      {% form 'customer_address', address %}
-                        {% if form.posted_successfully? %}
-                          {% assign translation_response = 'customer.addresses.response' | t %}
+                      {{ 'action.add_new_address' | t }}
+                    </button>
+                  </div>
+                {% comment %} add button - end {% endcomment %}
 
-                          {% render 'layout-message',
-                            type: 'success'
-                            text: translation_response
-                            class: 'mb-8'
-                          %}
-                        {% endif %}
+                {% comment %} forms - start {% endcomment %}
+                  <div
+                    v-show="visibleForm.value"
+                    class="border overflow-hidden p-6 md:p-8"
+                  >
+                    <transition-group name="slide-from-left">
+                      <div
+                        v-show="visibleForm.value && !currentlyEditedAddress.value"
+                        key="form-new"
+                      >
+                        {% form 'customer_address', customer.new_address %}
+                          {% render 'layout-account-address-form' %}
+                        {% endform %}
+                      </div>
 
-                        {% render 'layout-account-address-form', form: form %}
-                      {% endform %}
-                    </div>
-                  {% endfor %}
-                </div>
-              {% comment %} forms - end {% endcomment %}
+                      {% for address in customer.addresses %}
+                        <div
+                          v-show="currentlyEditedAddress.value && currentlyEditedAddress.value.id === {{ address.id }}"
+                          key="{{ address.id }}"
+                        >
+                          {% form 'customer_address', address %}
+                            {% if form.posted_successfully? %}
+                              {% assign translation_response = 'customer.addresses.response' | t %}
+
+                              {% render 'layout-message',
+                                type: 'success'
+                                text: translation_response
+                                class: 'mb-8'
+                              %}
+                            {% endif %}
+
+                            {% render 'layout-account-address-form', form: form %}
+                          {% endform %}
+                        </div>
+                      {% endfor %}
+                    </transition-group>
+                  </div>
+                {% comment %} forms - end {% endcomment %}
+              </transition-group>
             </div>
           {% comment %} form - end {% endcomment %}
 
