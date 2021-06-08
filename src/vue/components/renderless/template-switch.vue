@@ -1,4 +1,6 @@
 <script>
+import { ref, toRef } from 'vue'
+
 export default {
   props: {
     initial: {
@@ -7,24 +9,12 @@ export default {
       default: null
     }
   },
-  data () {
-    return {
-      active: null,
-    }
-  },
-  created () {
-    this.active = this.initial
-  },
-  methods: {
-    show (payload) {
-      this.active = payload
-    }
-  },
-  render () {
-    return this.$scopedSlots.default({
-      active: this.active,
-      show: this.show
-    })
+  setup (props, { slots }) {
+    const initial = toRef(props, 'initial')
+    const active = ref(initial.value)
+    const show = (payload) => active.value = payload
+
+    return () => slots.default({ active, show })
   }
 }
 </script>
