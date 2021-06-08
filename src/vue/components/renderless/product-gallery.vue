@@ -1,31 +1,23 @@
 <script>
+import { ref } from 'vue'
+
 export default {
-  props: {
-    featuredImage: {
-      type: Object,
-      required: true
-    }
-  },
-  data () {
-    return {
-      initialRender: true,
-      currentImage: null
-    }
-  },
-  methods: {
-    switchImage ($el) {
-      this.initialRender = false
-      this.currentImage = {
+  setup (props, { slots }) {
+    const initialRender = ref(true)
+    const currentImage = ref(null)
+
+    const switchImage = ($el) => {
+      initialRender.value = false
+      currentImage.value = {
         url: $el.target.dataset.url,
         alt: $el.target.dataset.alt || ''
       }
     }
-  },
-  render () {
-    return this.$scopedSlots.default({
-      initialRender: this.initialRender,
-      currentImage: this.currentImage,
-      switchImage: this.switchImage
+
+    return () => slots.default({
+      initialRender,
+      currentImage,
+      switchImage
     })
   }
 }
