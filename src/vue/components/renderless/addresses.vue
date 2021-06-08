@@ -1,4 +1,6 @@
 <script>
+import { ref, toRef } from 'vue'
+
 export default {
   props: {
     addresses: {
@@ -6,40 +8,38 @@ export default {
       default: null
     }
   },
-  data () {
-    return {
-      visibleForm: false,
-      currentlyEditedAddress: null
+  setup (props, { slots }) {
+    const addresses = toRef(props, 'addresses')
+    const visibleForm = ref(false)
+    const currentlyEditedAddress = ref(null)
+
+    const showForm = () => visibleForm.value = true
+
+    const editAddress = (id) => {
+      visibleForm.value = true
+      currentlyEditedAddress.value = addresses.value.find(el => el.id === id)
+      scrollFormIntoView()
     }
-  },
-  methods: {
-    showForm () {
-      this.visibleForm = true
-    },
-    editAddress (id) {
-      this.showForm()
-      this.currentlyEditedAddress = this.addresses.find(el => el.id === id)
-      this.scrollFormIntoView()
-    },
-    cancelEdit () {
-      this.visibleForm = false
-      this.currentlyEditedAddress = null
-      this.scrollFormIntoView()
-    },
-    scrollFormIntoView () {
-      // screen-lg
-      if (this.$screen.width < 1024) {
+
+    const cancelEdit = () => {
+      visibleForm.value = false
+      currentlyEditedAddress.value = null
+      scrollFormIntoView()
+    }
+
+    const scrollFormIntoView = () => {
+      // smaller than screen-lg
+      if (window.matchMedia('(max-width: 1023px)').matches) {
         document.querySelector('.address-form').scrollIntoView({ behavior: 'smooth' })
       }
     }
-  },
-  render () {
-    return this.$scopedSlots.default({
-      currentlyEditedAddress: this.currentlyEditedAddress,
-      visibleForm: this.visibleForm,
-      showForm: this.showForm,
-      editAddress: this.editAddress,
-      cancelEdit: this.cancelEdit
+
+    return () => slots.default({
+      visibleForm,
+      currentlyEditedAddress,
+      showForm,
+      editAddress,
+      cancelEdit
     })
   }
 }
