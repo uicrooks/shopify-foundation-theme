@@ -3,7 +3,7 @@
     v-slot="{ active, show }"
     initial="login"
   >
-    <div>
+    <transition-group name="slide-from-left">
       <div
         v-show="active.value === 'login'"
         key="login"
@@ -17,6 +17,6 @@
       >
         {% render 'layout-account-forgot-password' %}
       </div>
-    </div>
+    </transition-group>
   </renderless-template-switch>
 </div>
