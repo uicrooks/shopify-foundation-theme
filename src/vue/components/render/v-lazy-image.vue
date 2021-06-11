@@ -51,8 +51,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$attrs.class)
-
     if ('IntersectionObserver' in window) {
       this.observer = new IntersectionObserver(entries => {
         const image = entries[0]

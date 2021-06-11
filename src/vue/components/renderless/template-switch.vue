@@ -14,7 +14,10 @@ export default {
     const active = ref(initial.value)
     const show = (payload) => active.value = payload
 
-    return () => slots.default({ active, show })
+    return () => slots.default({
+      active,
+      show
+    })
   }
 }
 </script>
