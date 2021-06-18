@@ -23,33 +23,35 @@
         </div>
       </div>
 
-      <div class="flex gap-4 mt-4">
-        {% for image in product.images %}
-          <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
+      {% if product.has_only_default_variant %}
+        <div class="flex gap-4 mt-4">
+          {% for image in product.images %}
+            <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
 
-          <button
-            class="w-20 md:w-24 h-20 md:h-24"
-            data-url="{{ image.src | img_url: '750x' }}"
-            data-alt="{{ image.alt | escape }}"
-            @click="switchImage"
-          >
-            <v-lazy-image
-              sizes="
-                (min-width: 768px) 96px,
-                80px
-              "
-              srcset="
-                {{ image.src | img_url: '80x' }} 80w,
-                {{ image.src | img_url: '96x' }} 96w
-              "
-              src="{{ image.src | img_url: '96x' }}"
-              src-placeholder="{{ image.src | img_url: '25x' }}"
-              alt="{{ image.alt | escape }}"
-              class="w-full h-full object-cover object-center pointer-events-none"
-            ></v-lazy-image>
-          </button>
-        {% endfor %}
-      </div>
+            <button
+              class="w-20 md:w-24 h-20 md:h-24"
+              data-url="{{ image.src | img_url: '750x' }}"
+              data-alt="{{ image.alt | escape }}"
+              @click="switchImage"
+            >
+              <v-lazy-image
+                sizes="
+                  (min-width: 768px) 96px,
+                  80px
+                "
+                srcset="
+                  {{ image.src | img_url: '80x' }} 80w,
+                  {{ image.src | img_url: '96x' }} 96w
+                "
+                src="{{ image.src | img_url: '96x' }}"
+                src-placeholder="{{ image.src | img_url: '25x' }}"
+                alt="{{ image.alt | escape }}"
+                class="w-full h-full object-cover object-center pointer-events-none"
+              ></v-lazy-image>
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </renderless-product-gallery>
 
