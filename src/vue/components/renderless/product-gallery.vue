@@ -15,8 +15,8 @@ export default {
     }
 
     return () => slots.default({
-      initialRender,
-      currentImage,
+      initialRender: initialRender.value,
+      currentImage: currentImage.value,
       switchImage
     })
   }

@@ -6,7 +6,7 @@
     <div>
       <div>
         <v-lazy-image
-          v-if="initialRender.value"
+          v-if="initialRender"
           src="{{ featured_image | img_url: '750x' }}"
           src-placeholder="{{ featured_image | img_url: '50x' }}"
           alt="{{ featured_image.alt | escape }}"
@@ -15,9 +15,9 @@
 
         <div v-else>
           <img
-            :src="currentImage.value.url"
-            :key="currentImage.value.url"
-            :alt="currentImage.value.alt"
+            :src="currentImage.url"
+            :key="currentImage.url"
+            :alt="currentImage.alt"
             class="w-full h-full object-cover object-center"
           >
         </div>

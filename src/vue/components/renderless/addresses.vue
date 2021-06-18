@@ -35,8 +35,8 @@ export default {
     }
 
     return () => slots.default({
-      visibleForm,
-      currentlyEditedAddress,
+      visibleForm: visibleForm.value,
+      currentlyEditedAddress: currentlyEditedAddress.value,
       showForm,
       editAddress,
       cancelEdit

@@ -5,14 +5,14 @@
   >
     <transition-group name="slide-from-left">
       <div
-        v-show="active.value === 'login'"
+        v-show="active === 'login'"
         key="login"
       >
         {% render 'layout-account-login' %}
       </div>
 
       <div
-        v-show="active.value === 'forgot-password'"
+        v-show="active === 'forgot-password'"
         key="forgot-password"
       >
         {% render 'layout-account-forgot-password' %}

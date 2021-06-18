@@ -20,7 +20,7 @@
             <div class="address-form lg:col-span-2 pt-4 lg:pt-0">
               <div class="text-lg lg:text-xl font-bold mb-6">
                 <transition name="slide-from-left">
-                  <div v-if="!currentlyEditedAddress.value" key="new">
+                  <div v-if="!currentlyEditedAddress" key="new">
                     {{ 'customer.addresses.add_new_address' | t }}
                   </div>
 
@@ -33,7 +33,7 @@
               <transition-group name="form-fade">
                 {% comment %} add button - start {% endcomment %}
                   <div
-                    v-if="!visibleForm.value"
+                    v-if="!visibleForm"
                     key="button-add-new-address"
                     class="h-64 flex justify-center items-center border border-dashed rounded-sm p-4 sm:p-8"
                   >
@@ -48,12 +48,12 @@
 
                 {% comment %} forms - start {% endcomment %}
                   <div
-                    v-show="visibleForm.value"
+                    v-show="visibleForm"
                     class="border overflow-hidden p-6 md:p-8"
                   >
                     <transition-group name="slide-from-left">
                       <div
-                        v-show="visibleForm.value && !currentlyEditedAddress.value"
+                        v-show="visibleForm && !currentlyEditedAddress"
                         key="form-new"
                       >
                         {% form 'customer_address', customer.new_address %}
@@ -63,7 +63,7 @@
 
                       {% for address in customer.addresses %}
                         <div
-                          v-show="currentlyEditedAddress.value && currentlyEditedAddress.value.id === {{ address.id }}"
+                          v-show="currentlyEditedAddress && currentlyEditedAddress.id === {{ address.id }}"
                           key="{{ address.id }}"
                         >
                           {% form 'customer_address', address %}

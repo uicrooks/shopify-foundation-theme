@@ -15,7 +15,7 @@ export default {
     const show = (payload) => active.value = payload
 
     return () => slots.default({
-      active,
+      active: active.value,
       show
     })
   }
