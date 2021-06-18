@@ -93,7 +93,7 @@
     {% endif %}
 
     {% form 'product', product %}
-      <div class="flex gap-4 mb-6">
+      <div class="flex items-end gap-4 mb-6">
         <input
           type="number"
           name="quantity"
@@ -103,18 +103,27 @@
           class="w-16"
         >
 
-        <div class="flex-1 {% unless product.variants.size > 1 %}hidden{% endunless %}">
-          <select name="id" class="w-full h-12 border p-2">
+        <div class="flex-1 {% if product.has_only_default_variant %}hidden{% endif %}">
+          <select
+            name="id"
+            class="w-full h-12 border p-2 mt-4"
+            @change="appendParameter({
+              parameter: 'variant',
+              reload: false
+            }, $event)"
+          >
             {% for variant in product.variants %}
-              {% if variant.available %}
-                <option value="{{ variant.id }}">
+              <option
+                value="{{ variant.id }}"
+                {% if current_variant.id == variant.id %}selected{% endif %}
+                {% unless variant.available %}disabled{% endunless %}
+              >
+                {% if variant.available %}
                   {{ variant.title }} - {{ variant.price | money_with_currency }}
-                </option>
-              {% else %}
-                <option disabled="disabled">
+                {% else %}
                   {{ variant.title }} - {{ 'common.sold_out' | t }}
-                </option>
-              {% endif %}
+                {% endif %}
+              </option>
             {% endfor %}
           </select>
         </div>
