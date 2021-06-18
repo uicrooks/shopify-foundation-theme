@@ -62,7 +62,7 @@
       </h1>
     {% endif %}
 
-    {% if product.available %}
+    {% if current_variant.available %}
       <div class="mb-10">
         <div class="flex gap-3">
           <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
@@ -96,51 +96,84 @@
 
     {% form 'product', product %}
       <div class="flex items-end gap-4 mb-6">
-        <input
-          type="number"
-          name="quantity"
-          value="1"
-          min="1"
-          pattern="[0-9]*"
-          class="w-16"
-        >
-
-        <div class="flex-1 {% if product.has_only_default_variant %}hidden{% endif %}">
-          <select
-            name="id"
-            class="w-full h-12 border p-2 mt-4"
-            @change="appendParameter({
-              parameter: 'variant'
-            }, $event)"
+        {% if current_variant.available %}
+          <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            pattern="[0-9]*"
+            class="w-16"
           >
-            {% for variant in product.variants %}
-              <option
-                value="{{ variant.id }}"
-                {% if current_variant.id == variant.id %}selected{% endif %}
-                {% unless variant.available %}disabled{% endunless %}
-              >
-                {% if variant.available %}
-                  {{ variant.title }} - {{ variant.price | money_with_currency }}
-                {% else %}
-                  {{ variant.title }} - {{ 'common.sold_out' | t }}
-                {% endif %}
-              </option>
-            {% endfor %}
-          </select>
-        </div>
+        {% endif %}
+
+        {% if product.has_only_default_variant %}
+          <input
+            name="id"
+            type="hidden"
+            :value="{{ current_variant.id }}"
+            readonly
+          >
+        {% else %}
+          <div class="flex-1">
+            <renderless-product-variant-selector
+              v-slot="{ selectedVariant, selectOption }"
+              :current-variant="{{ current_variant | json | replace: '"', "'" }}"
+              :product-options="{{ product.options_with_values | json | replace: '"', "'" }}"
+              :product-variants="{{ product.variants | json | replace: '"', "'" }}"
+            >
+              <div>
+                <input
+                  name="id"
+                  type="hidden"
+                  :value="selectedVariant.id"
+                  readonly
+                >
+
+                <div class="flex gap-x-3">
+                  {% for option in product.options_with_values %}
+                    <div class="flex-1">
+                      <label for="product-select-option-{{ forloop.index }}">
+                        {{ option.name | escape }}
+                      </label>
+
+                      <select
+                        id="product-select-{{ forloop.index }}" class="w-full h-12 border p-2"
+                        @change="selectOption({
+                          name: '{{ option.name }}',
+                        }, $event)"
+                      >
+                        {% for value in option.values %}
+                          <option
+                            value="{{ value }}"
+                            {% if option.selected_value == value %}selected{% endif %}
+                          >
+                            {{ value | escape }}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </renderless-product-variant-selector>
+          </div>
+        {% endif %}
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <div class="button-shopify-buy-it-now">
-          {{ form | payment_button }}
-        </div>
+      {% if current_variant.available %}
+        <div class="grid grid-cols-2 gap-4">
+          <div class="button-shopify-buy-it-now">
+            {{ form | payment_button }}
+          </div>
 
-        <div>
-          <button name="add" class="button button-secondary w-full h-12">
-            {{ 'action.add_to_cart' | t }}
-          </button>
+          <div>
+            <button name="add" class="button button-secondary w-full h-12">
+              {{ 'action.add_to_cart' | t }}
+            </button>
+          </div>
         </div>
-      </div>
+      {% endif %}
     {% endform %}
 
     {% if product.description %}
