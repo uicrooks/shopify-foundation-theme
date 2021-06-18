@@ -108,8 +108,7 @@
             name="id"
             class="w-full h-12 border p-2 mt-4"
             @change="appendParameter({
-              parameter: 'variant',
-              reload: false
+              parameter: 'variant'
             }, $event)"
           >
             {% for variant in product.variants %}
