@@ -6,7 +6,7 @@
     <div>
       <div>
         <v-lazy-image
-          v-if="initialRender.value"
+          v-if="initialRender"
           src="{{ featured_image | img_url: '750x' }}"
           src-placeholder="{{ featured_image | img_url: '50x' }}"
           alt="{{ featured_image.alt | escape }}"
@@ -15,41 +15,43 @@
 
         <div v-else>
           <img
-            :src="currentImage.value.url"
-            :key="currentImage.value.url"
-            :alt="currentImage.value.alt"
+            :src="currentImage.url"
+            :key="currentImage.url"
+            :alt="currentImage.alt"
             class="w-full h-full object-cover object-center"
           >
         </div>
       </div>
 
-      <div class="flex gap-4 mt-4">
-        {% for image in product.images %}
-          <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
+      {% if product.has_only_default_variant %}
+        <div class="flex gap-4 mt-4">
+          {% for image in product.images %}
+            <link rel="preload" as="image" href="{{ image.src | img_url: '750x' }}">
 
-          <button
-            class="w-20 md:w-24 h-20 md:h-24"
-            data-url="{{ image.src | img_url: '750x' }}"
-            data-alt="{{ image.alt | escape }}"
-            @click="switchImage"
-          >
-            <v-lazy-image
-              sizes="
-                (min-width: 768px) 96px,
-                80px
-              "
-              srcset="
-                {{ image.src | img_url: '80x' }} 80w,
-                {{ image.src | img_url: '96x' }} 96w
-              "
-              src="{{ image.src | img_url: '96x' }}"
-              src-placeholder="{{ image.src | img_url: '25x' }}"
-              alt="{{ image.alt | escape }}"
-              class="w-full h-full object-cover object-center pointer-events-none"
-            ></v-lazy-image>
-          </button>
-        {% endfor %}
-      </div>
+            <button
+              class="w-20 md:w-24 h-20 md:h-24"
+              data-url="{{ image.src | img_url: '750x' }}"
+              data-alt="{{ image.alt | escape }}"
+              @click="switchImage"
+            >
+              <v-lazy-image
+                sizes="
+                  (min-width: 768px) 96px,
+                  80px
+                "
+                srcset="
+                  {{ image.src | img_url: '80x' }} 80w,
+                  {{ image.src | img_url: '96x' }} 96w
+                "
+                src="{{ image.src | img_url: '96x' }}"
+                src-placeholder="{{ image.src | img_url: '25x' }}"
+                alt="{{ image.alt | escape }}"
+                class="w-full h-full object-cover object-center pointer-events-none"
+              ></v-lazy-image>
+            </button>
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </renderless-product-gallery>
 
@@ -60,7 +62,7 @@
       </h1>
     {% endif %}
 
-    {% if product.available %}
+    {% if current_variant.available %}
       <div class="mb-10">
         <div class="flex gap-3">
           <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
@@ -93,44 +95,86 @@
     {% endif %}
 
     {% form 'product', product %}
-      <div class="flex gap-4 mb-6">
-        <input
-          type="number"
-          name="quantity"
-          value="1"
-          min="1"
-          pattern="[0-9]*"
-          class="w-16"
-        >
+      <div class="flex items-end gap-4 mb-6">
+        {% if current_variant.available %}
+          <input
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            pattern="[0-9]*"
+            class="w-16"
+          >
+        {% endif %}
 
-        <div class="flex-1 {% unless product.variants.size > 1 %}hidden{% endunless %}">
-          <select name="id" class="w-full h-12 border p-2">
-            {% for variant in product.variants %}
-              {% if variant.available %}
-                <option value="{{ variant.id }}">
-                  {{ variant.title }} - {{ variant.price | money_with_currency }}
-                </option>
-              {% else %}
-                <option disabled="disabled">
-                  {{ variant.title }} - {{ 'common.sold_out' | t }}
-                </option>
-              {% endif %}
-            {% endfor %}
-          </select>
-        </div>
+        {% if product.has_only_default_variant %}
+          <input
+            name="id"
+            type="hidden"
+            :value="{{ current_variant.id }}"
+            readonly
+          >
+        {% else %}
+          <div class="flex-1">
+            <renderless-product-variant-selector
+              v-slot="{ selectedVariant, selectOption }"
+              :current-variant="{{ current_variant | json | replace: '"', "'" }}"
+              :product-options="{{ product.options_with_values | json | replace: '"', "'" }}"
+              :product-variants="{{ product.variants | json | replace: '"', "'" }}"
+            >
+              <div>
+                <input
+                  name="id"
+                  type="hidden"
+                  :value="selectedVariant.id"
+                  readonly
+                >
+
+                <div class="flex gap-x-3">
+                  {% for option in product.options_with_values %}
+                    <div class="flex-1">
+                      <label for="product-select-option-{{ forloop.index }}">
+                        {{ option.name | escape }}
+                      </label>
+
+                      <select
+                        id="product-select-{{ forloop.index }}"
+                        class="w-full h-12 border p-2"
+                        @change="selectOption({
+                          name: '{{ option.name }}'
+                        }, $event)"
+                      >
+                        {% for value in option.values %}
+                          <option
+                            value="{{ value }}"
+                            {% if option.selected_value == value %}selected{% endif %}
+                          >
+                            {{ value | escape }}
+                          </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </renderless-product-variant-selector>
+          </div>
+        {% endif %}
       </div>
 
-      <div class="grid grid-cols-2 gap-4">
-        <div class="button-shopify-buy-it-now">
-          {{ form | payment_button }}
-        </div>
+      {% if current_variant.available %}
+        <div class="grid grid-cols-2 gap-4">
+          <div class="button-shopify-buy-it-now">
+            {{ form | payment_button }}
+          </div>
 
-        <div>
-          <button name="add" class="button button-secondary w-full h-12">
-            {{ 'action.add_to_cart' | t }}
-          </button>
+          <div>
+            <button name="add" class="button button-secondary w-full h-12">
+              {{ 'action.add_to_cart' | t }}
+            </button>
+          </div>
         </div>
-      </div>
+      {% endif %}
     {% endform %}
 
     {% if product.description %}
