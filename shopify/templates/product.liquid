@@ -138,9 +138,10 @@
                       </label>
 
                       <select
-                        id="product-select-{{ forloop.index }}" class="w-full h-12 border p-2"
+                        id="product-select-{{ forloop.index }}"
+                        class="w-full h-12 border p-2"
                         @change="selectOption({
-                          name: '{{ option.name }}',
+                          name: '{{ option.name }}'
                         }, $event)"
                       >
                         {% for value in option.values %}
