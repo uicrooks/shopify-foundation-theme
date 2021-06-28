@@ -7,7 +7,8 @@
 const path = require('path')
 
 module.exports = {
-  // mode: 'jit',
+  // mode: 'jit', // https://tailwindcss.com/docs/just-in-time-mode
+  darkMode: false,
   theme: {
     extend: {
       fontFamily: {
@@ -26,10 +27,8 @@ module.exports = {
     }
   },
   variants: {},
-  darkMode: false,
   plugins: [],
   purge: {
-    // learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enabled: process.env.NODE_ENV === 'production',
     content: [
       path.resolve(__dirname, '**/*.{js,vue}'),
