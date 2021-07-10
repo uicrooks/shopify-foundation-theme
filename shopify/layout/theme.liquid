@@ -2,7 +2,7 @@
 <html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -32,33 +32,18 @@
     {{ content_for_header }}
   </head>
 
-  <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }} min-h-screen">
-    {% if request.page_type == 'captcha' %}
-      {% comment %}
-        fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
-        but vue removes any script tags on mount, so don't initialize the vue instance on captcha pages
-      {% endcomment %}
-      {% render 'template-captcha' %}
-    {% else %}
-      <div id="app" class="min-h-screen flex flex-col font-sans">
-        {% section 'layout-announcement-bar' %}
-        {% section 'layout-header' %}
+  <body>
+    <div {% unless request.page_type == 'captcha' %}id="app"{% endunless %}>
+      {% section 'layout-header' %}
 
-        <main
-          id="main"
-          role="main"
-          class="flex-1 pt-8 {% if request.page_type == 'index' %}md:pt-12{% else %}md:pt-20 pb-16 md:pb-32{% endif %}"
-        >
-          {{ content_for_layout }}
-        </main>
+      <main id="main" role="main">
+        {{ content_for_layout }}
+      </main>
 
-        {% section 'layout-footer' %}
-        {% section 'layout-mobile-navigation' %}
-        {% render 'layout-mobile-menu' %}
-      </div>
-    {% endif %}
+      {% section 'layout-footer' %}
+    </div>
 
     <!-- webpack bundle -->
-    {{ 'bundle.js' | asset_url | script_tag }}
+    <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>
