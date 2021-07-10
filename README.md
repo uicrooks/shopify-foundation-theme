@@ -8,14 +8,6 @@
 </p>
 <!-- logo (end) -->
 
-<!-- badges (start) -->
-<p align="center">
-  <img src="https://img.shields.io/github/package-json/v/uicrooks/shopify-foundation-theme?color=%236e78ff">
-  <img src="https://img.shields.io/github/package-json/dependency-version/uicrooks/shopify-foundation-theme/vue?color=%234fc08d">
-  <img src="https://img.shields.io/github/package-json/dependency-version/uicrooks/shopify-foundation-theme/tailwindcss?color=%2306b6d4">
-</p>
-<!-- badges (end) -->
-
 <!-- title / description (start) -->
 <h2 align="center">Shopify Foundation Theme</h2>
 
@@ -29,7 +21,7 @@ Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](
 <!-- features (start) -->
 ## Features
 
-- All [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab#features) features
+- All [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab/tree/legacy-v3#features) features
 - Starter Theme ready for customization
 - Clean structure
 - Vue.js
@@ -41,5 +33,5 @@ Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](
 <!-- docs (start) -->
 ## Docs
 
-Everything from the [Shopify Theme Lab docs](https://github.com/uicrooks/shopify-theme-lab) applies to this project, since it was built with Shopify Theme Lab.
+Everything from the [Shopify Theme Lab docs](https://github.com/uicrooks/shopify-theme-lab/tree/legacy-v3) applies to this project, since it was built with Shopify Theme Lab.
 <!-- docs (end) -->
