@@ -5,7 +5,7 @@
       "settings": {
         "headline": "Headline",
         "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
-        "button-url": "/",
+        "button-url": "\/",
         "button-text": "Button"
       }
     },
@@ -22,8 +22,70 @@
       "settings": {
         "headline": "Headline",
         "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
-        "button-url": "/",
+        "button-url": "\/",
         "button-text": "Button"
+      }
+    },
+    "section-image-row": {
+      "type": "section-image-row",
+      "blocks": {
+        "image-1": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image-2": {
+          "type": "image",
+          "settings": {
+          }
+        },
+        "image-3": {
+          "type": "image",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "image-1",
+        "image-2",
+        "image-3"
+      ],
+      "settings": {
+        "headline": "Our store"
+      }
+    },
+    "section-quotes": {
+      "type": "section-quotes",
+      "blocks": {
+        "quote-1": {
+          "type": "quote",
+          "settings": {
+            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "quote-author": "Author's name"
+          }
+        },
+        "quote-2": {
+          "type": "quote",
+          "settings": {
+            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "quote-author": "Author's name"
+          }
+        },
+        "quote-3": {
+          "type": "quote",
+          "settings": {
+            "quote-text": "Add customer reviews and testimonials to showcase your store’s happy customers.",
+            "quote-author": "Author's name"
+          }
+        }
+      },
+      "block_order": [
+        "quote-1",
+        "quote-2",
+        "quote-3"
+      ],
+      "settings": {
+        "headline": "What others say about us"
       }
     },
     "section-newsletter": {
@@ -38,6 +100,8 @@
     "section-hero",
     "section-collection",
     "section-banner",
+    "section-image-row",
+    "section-quotes",
     "section-newsletter"
   ]
 }
