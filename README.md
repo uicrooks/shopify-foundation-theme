@@ -11,7 +11,7 @@
 <!-- title / description (start) -->
 <h2 align="center">Shopify Foundation Theme</h2>
 
-Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab), [Vue](https://vuejs.org) and [Tailwind CSS](https://tailwindcss.com).
+Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab/tree/legacy-v3), [Vue](https://v3.vuejs.org) and [Tailwind CSS](https://tailwindcss.com).
 <!-- title / description (end) -->
 
 <!-- preview (start) -->
