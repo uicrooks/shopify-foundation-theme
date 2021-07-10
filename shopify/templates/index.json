@@ -1,6 +1,43 @@
 {
   "sections": {
+    "section-hero": {
+      "type": "section-hero",
+      "settings": {
+        "headline": "Headline",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+        "button-url": "/",
+        "button-text": "Button"
+      }
+    },
+    "section-collection": {
+      "type": "section-collection",
+      "settings": {
+        "headline": "Selected products",
+        "collection_featured": "",
+        "collection_products_limit": "4"
+      }
+    },
+    "section-banner": {
+      "type": "section-banner",
+      "settings": {
+        "headline": "Headline",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque.",
+        "button-url": "/",
+        "button-text": "Button"
+      }
+    },
+    "section-newsletter": {
+      "type": "section-newsletter",
+      "settings": {
+        "headline": "Our newsletter",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quos hic praesentium recusandae dolores odio animi deleniti officia cum itaque."
+      }
+    }
   },
   "order": [
+    "section-hero",
+    "section-collection",
+    "section-banner",
+    "section-newsletter"
   ]
 }
