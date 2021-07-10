@@ -16,6 +16,19 @@
 }
 
 /**
+ * slide-mobile-menu
+ */
+.slide-mobile-menu-enter-active,
+.slide-mobile-menu-leave-active {
+  @apply transition duration-200;
+}
+
+.slide-mobile-menu-enter-from,
+.slide-mobile-menu-leave-to {
+  @apply transform translate-x-full opacity-0;
+}
+
+/**
  * form-fade
  */
 .form-fade-enter-active {

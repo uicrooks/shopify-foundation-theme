@@ -1,0 +1,62 @@
+<div class="container mb-12 md:mb-24">
+  {% if section.settings.headline %}
+    <div class="text-2xl lg:text-3xl font-bold text-center mb-6 md:mb-12">
+      {{ section.settings.headline }}
+    </div>
+  {% endif %}
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for block in section.blocks %}
+      {% render 'section-image',
+        class: 'h-96'
+        image: block.settings.image
+      %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.image-row.name",
+  "class": "shopify-section-vue",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "t:common.headline",
+      "default": "Our store"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "t:common.image",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:common.image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.image-row.name",
+      "category": "Images",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

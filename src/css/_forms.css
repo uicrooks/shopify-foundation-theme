@@ -1,9 +1,5 @@
 label:not([type="checkbox"]):not([type="radio"]) {
-  @apply text-sm select-none mb-2;
-
-  @screen sm {
-    @apply text-base;
-  }
+  @apply text-sm sm:text-base select-none mb-2;
 }
 
 input:not([type="checkbox"]):not([type="radio"]) {
