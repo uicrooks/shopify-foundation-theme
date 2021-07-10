@@ -6,20 +6,12 @@
   {% endif %}
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {% render 'section-image',
-      class: 'h-96'
-      image: section.settings.image-left
-    %}
-
-    {% render 'section-image',
-      class: 'h-96'
-      image: section.settings.image-middle
-    %}
-
-    {% render 'section-image',
-      class: 'h-96'
-      image: section.settings.image-right
-    %}
+    {% for block in section.blocks %}
+      {% render 'section-image',
+        class: 'h-96'
+        image: block.settings.image
+      %}
+    {% endfor %}
   </div>
 </div>
 
@@ -33,27 +25,37 @@
       "id": "headline",
       "label": "t:common.headline",
       "default": "Our store"
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "image_picker",
-      "id": "image-left",
-      "label": "Image (left)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image-middle",
-      "label": "Image (middle)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image-right",
-      "label": "Image (right)"
+      "type": "image",
+      "name": "t:common.image",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:common.image"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "t:sections.image-row.name",
-      "category": "Images"
+      "category": "Images",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
     }
   ]
 }
