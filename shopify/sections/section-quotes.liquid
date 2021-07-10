@@ -6,20 +6,12 @@
   {% endif %}
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12">
-    {% render 'section-quote',
-      text: section.settings.quote-text-left
-      author: section.settings.quote-author-left
-    %}
-
-    {% render 'section-quote',
-      text: section.settings.quote-text-middle
-      author: section.settings.quote-author-middle
-    %}
-
-    {% render 'section-quote',
-      text: section.settings.quote-text-right
-      author: section.settings.quote-author-right
-    %}
+    {% for block in section.blocks %}
+      {% render 'section-quote',
+        text: block.settings.quote-text
+        author: block.settings.quote-author
+      %}
+    {% endfor %}
   </div>
 </div>
 
@@ -32,60 +24,44 @@
       "id": "headline",
       "label": "t:common.headline",
       "default": "What others say about us"
-    },
+    }
+  ],
+  "blocks": [
     {
-      "type": "header",
-      "content": "Quote (left)"
-    },
-    {
-      "type": "textarea",
-      "id": "quote-text-left",
-      "label": "t:common.text",
-      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
-    },
-    {
-      "type": "text",
-      "id": "quote-author-left",
-      "label": "t:common.author",
-      "default": "Author's name"
-    },
-    {
-      "type": "header",
-      "content": "Quote (middle)"
-    },
-    {
-      "type": "textarea",
-      "id": "quote-text-middle",
-      "label": "t:common.text",
-      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
-    },
-    {
-      "type": "text",
-      "id": "quote-author-middle",
-      "label": "t:common.author",
-      "default": "Author's name"
-    },
-    {
-      "type": "header",
-      "content": "Quote (right)"
-    },
-    {
-      "type": "textarea",
-      "id": "quote-text-right",
-      "label": "t:common.text",
-      "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
-    },
-    {
-      "type": "text",
-      "id": "quote-author-right",
-      "label": "t:common.author",
-      "default": "Author's name"
+      "type": "quote",
+      "name": "t:sections.quotes.settings.quote",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote-text",
+          "label": "t:common.text",
+          "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+        },
+        {
+          "type": "text",
+          "id": "quote-author",
+          "label": "t:common.author",
+          "default": "Author's name"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "t:sections.quotes.name",
-      "category": "Text"
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
     }
   ]
 }
