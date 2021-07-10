@@ -1,10 +1,10 @@
 <!-- logo (start) -->
 <p align="center">
-  <img src=".github/img/logo.svg" width="325px">
+  <img src="https://raw.githubusercontent.com/uicrooks/shopify-foundation-theme/master/.github/img/logo.svg" width="325px">
 </p>
 
 <p align="center">
-  <img src=".github/img/banner.svg" width="400px">
+  <img src="https://raw.githubusercontent.com/uicrooks/shopify-foundation-theme/master/.github/img/banner.svg" width="400px">
 </p>
 <!-- logo (end) -->
 
@@ -23,13 +23,14 @@ Shopify Foundation Theme is modern Shopify theme built with [Shopify Theme Lab](
 <!-- title / description (end) -->
 
 <!-- preview (start) -->
-<img src=".github/img/preview.png" width="100%">
+<img src="https://raw.githubusercontent.com/uicrooks/shopify-foundation-theme/master/.github/img/preview.png" width="100%">
 <!-- preview (end) -->
 
 <!-- features (start) -->
 ## Features
 
 - All [Shopify Theme Lab](https://github.com/uicrooks/shopify-theme-lab#features) features
+- Online Store 2.0 support
 - Starter Theme ready for customization
 - Clean structure
 - Vue.js
