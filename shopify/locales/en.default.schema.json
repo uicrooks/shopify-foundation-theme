@@ -6,7 +6,11 @@
     "link": "Link",
     "author": "Author",
     "image": "Image",
-    "collection": "Collection"
+    "collection": "Collection",
+    "button": {
+      "text": "Button text",
+      "url": "Button URL"
+    }
   },
   "settings_schema": {
     "custom_settings": {
@@ -52,6 +56,9 @@
     "collection": {
       "name": "Collection",
       "settings": {
+        "max-products-to-display": "Max. products to display",
+        "4-products": "4 Products",
+        "8-products": "8 Products"
       }
     },
     "hero": {
