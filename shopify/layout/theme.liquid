@@ -54,7 +54,10 @@
 
         {% section 'layout-footer' %}
         {% section 'layout-mobile-navigation' %}
-        {% render 'layout-mobile-menu' %}
+
+        <transition name="slide-mobile-menu">
+          {% render 'layout-mobile-menu' %}
+        </transition>
       </div>
     {% endif %}
 
