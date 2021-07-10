@@ -1,9 +1,5 @@
 .button {
-  @apply w-full inline-block border text-base font-medium text-center rounded-sm transition duration-150 px-6 py-2;
-
-  @screen sm {
-    @apply w-auto;
-  }
+  @apply w-full sm:w-auto inline-block border text-base font-medium text-center rounded-sm transition duration-150 px-6 py-2;
 }
 
 .button-primary {
