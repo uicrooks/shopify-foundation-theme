@@ -31,40 +31,40 @@
 
 {% schema %}
 {
-  "name":"Collection",
+  "name": "t:sections.collection.name",
   "class": "shopify-section-vue",
   "settings": [
     {
       "type": "text",
       "id": "headline",
-      "label": "Headline",
+      "label": "t:common.text",
       "default": "Selected products"
     },
     {
       "type": "collection",
       "id": "collection_featured",
-      "label": "Collection"
+      "label": "t:common.collection"
     },
     {
       "type": "select",
       "id": "collection_products_limit",
-      "label": "Max. products to display",
+      "label": "t:sections.collection.settings.max-products-to-display",
       "default": "4",
       "options": [
         {
           "value": "4",
-          "label": "4 Products"
+          "label": "t:sections.collection.settings.4-products"
         },
         {
           "value": "8",
-          "label": "8 Products"
+          "label": "t:sections.collection.settings.8-products"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Collection",
+      "name": "t:sections.collection.name",
       "category": "Collection"
     }
   ]

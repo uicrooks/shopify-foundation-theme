@@ -2,7 +2,7 @@
 <html lang="{{ request.locale.iso_code }}" class="overflow-y-scroll">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
@@ -32,7 +32,7 @@
     {{ content_for_header }}
   </head>
 
-  <body id="{{ page_title | handle }}" class="template-{{ request.page_type | handle }} min-h-screen">
+  <body class="min-h-screen">
     {% if request.page_type == 'captcha' %}
       {% comment %}
         fix: Shopify automatically inserts script tags on captcha pages into the content_for_layout tag
@@ -54,11 +54,14 @@
 
         {% section 'layout-footer' %}
         {% section 'layout-mobile-navigation' %}
-        {% render 'layout-mobile-menu' %}
+
+        <transition name="slide-mobile-menu">
+          {% render 'layout-mobile-menu' %}
+        </transition>
       </div>
     {% endif %}
 
     <!-- webpack bundle -->
-    {{ 'bundle.js' | asset_url | script_tag }}
+    <script src="{{ 'bundle.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

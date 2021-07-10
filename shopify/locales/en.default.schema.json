@@ -1,0 +1,83 @@
+{
+  "common": {
+    "headline": "Headline",
+    "text": "Text",
+    "content": "Content",
+    "link": "Link",
+    "author": "Author",
+    "image": "Image",
+    "collection": "Collection",
+    "button": {
+      "text": "Button text",
+      "url": "Button URL"
+    }
+  },
+  "settings_schema": {
+    "custom_settings": {
+      "name": "Custom settings",
+      "settings": {
+        "header": "About JSON settings",
+        "paragraph": "The settings_schema.json file controls the content of the Theme settings area of the theme editor. Settings in this file translate to global theme settings, which can be accessed through the Liquid settings object. [Learn more](https://shopify.dev/themes/architecture/settings)"
+      }
+    }
+  },
+  "sections": {
+    "header": {
+      "name": "Header",
+      "settings": {
+        "paragraph": "Add custom settings for this section. [Learn more](https://shopify.dev/themes/architecture/settings)"
+      }
+    },
+    "footer": {
+      "name": "Footer",
+      "settings": {
+        "header": {
+          "content": "Social Icons",
+          "info": "Select which social icons to display"
+        },
+        "show-icon": "Show Icon"
+      }
+    },
+    "mobile-navigation": {
+      "name": "Mobile Navigation",
+      "settings": {}
+    },
+    "announcement-bar": {
+      "name": "Announcement bar",
+      "settings": {
+        "show-announcement-bar": "Show Announcement bar",
+        "show-only-on-home-page": "Show only on home page"
+      }
+    },
+    "banner": {
+      "name": "Banner",
+      "settings": {}
+    },
+    "collection": {
+      "name": "Collection",
+      "settings": {
+        "max-products-to-display": "Max. products to display",
+        "4-products": "4 Products",
+        "8-products": "8 Products"
+      }
+    },
+    "hero": {
+      "name": "Hero",
+      "settings": {}
+    },
+    "image-row": {
+      "name": "Image row",
+      "settings": {}
+    },
+    "newsletter": {
+      "name": "Newsletter",
+      "settings": {}
+    },
+    "quotes": {
+      "name": "Quotes",
+      "settings": {
+        "quote": "Quote"
+      }
+    }
+  }
+}
