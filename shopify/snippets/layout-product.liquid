@@ -1,6 +1,6 @@
 <div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
   <a href="{{ product.url | within: collection }}" class="block relative">
-    <v-lazy-image
+    <img
       sizes="
         (min-width: 768px) 450px,
         630px
@@ -12,8 +12,9 @@
       src="{{ product.featured_image.src | img_url: '630x' }}"
       src-placeholder="{{ product.featured_image.src | img_url: '50x' }}"
       alt="{{ product.featured_image.alt | escape }}"
+      loading="lazy"
       class="w-full h-80 sm:h-64 xl:h-80 2xl:max-h-96 object-cover object-center"
-    ></v-lazy-image>
+    >
 
     {% if product.compare_at_price %}
       <div class="bg-red-500 text-white text-sm tracking-wider uppercase absolute top-0 left-0 px-2 py-1">

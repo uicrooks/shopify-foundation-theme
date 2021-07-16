@@ -5,19 +5,21 @@
   <renderless-product-gallery v-slot="{ initialRender, currentImage, switchImage }">
     <div>
       <div>
-        <v-lazy-image
+        <img
           v-if="initialRender"
           src="{{ featured_image | img_url: '750x' }}"
           src-placeholder="{{ featured_image | img_url: '50x' }}"
           alt="{{ featured_image.alt | escape }}"
+          loading="lazy"
           class="w-full h-auto object-cover object-center"
-        ></v-lazy-image>
+        >
 
         <div v-else>
           <img
             :src="currentImage.url"
             :key="currentImage.url"
             :alt="currentImage.alt"
+            loading="lazy"
             class="w-full h-full object-cover object-center"
           >
         </div>
@@ -34,7 +36,7 @@
               data-alt="{{ image.alt | escape }}"
               @click="switchImage"
             >
-              <v-lazy-image
+              <img
                 sizes="
                   (min-width: 768px) 96px,
                   80px
@@ -46,8 +48,9 @@
                 src="{{ image.src | img_url: '96x' }}"
                 src-placeholder="{{ image.src | img_url: '25x' }}"
                 alt="{{ image.alt | escape }}"
+                loading="lazy"
                 class="w-full h-full object-cover object-center pointer-events-none"
-              ></v-lazy-image>
+              >
             </button>
           {% endfor %}
         </div>

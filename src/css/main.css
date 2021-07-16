@@ -10,6 +10,5 @@
 @import "_mobile-navigation";
 @import "_sections";
 @import "_transitions";
-@import "_v-lazy-image";
 
 @import "tailwindcss/utilities";

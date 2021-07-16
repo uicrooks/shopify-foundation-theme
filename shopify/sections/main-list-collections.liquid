@@ -9,7 +9,7 @@
         {% for collection in collections %}
           <div>
             <a href="{{ collection.url }}">
-              <v-lazy-image
+              <img
                 sizes="
                   (min-width: 768px) 450px,
                   400px
@@ -21,8 +21,9 @@
                 src="{{ collection.image | img_url: '400x' }}"
                 src-placeholder="{{ collection.image | img_url: '50x' }}"
                 alt="{{ collection.image.alt | escape }}"
+                loading="lazy"
                 class="w-full h-32 sm:h-48 lg:h-64 xl:h-80 object-cover object-center"
-              ></v-lazy-image>
+              >
             </a>
 
             <div class="mt-4">
