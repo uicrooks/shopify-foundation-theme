@@ -3,7 +3,7 @@
 <div class="container grid md:grid-cols-2 lg:grid-cols-3 mb-12 md:mb-24">
   <div class="lg:col-span-2">
     {% if image %}
-      <v-lazy-image
+      <img
         sizes="
           (min-width: 1536px) 1000px,
           (min-width: 1280px) 850px,
@@ -23,8 +23,9 @@
         src="{{ image | img_url: '1000x' }}"
         src-placeholder="{{  image | img_url: '50x' }}"
         alt="{{ image.alt }}"
+        loading="lazy"
         class="w-full h-full object-cover object-center"
-      ></v-lazy-image>
+      >
     {% else %}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
     {% endif %}

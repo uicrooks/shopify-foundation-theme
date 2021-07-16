@@ -2,7 +2,7 @@
   <div class="md:grid grid-cols-8 gap-4">
     <div class="col-span-5 flex flex-wrap gap-2 md:gap-6 mb-4 md:mb-0">
       <a href="{{ product.url | within: collections.all }}" class="block w-full md:w-32 h-64 md:h-32">
-        <v-lazy-image
+        <img
           sizes="
             (min-width: 768px) 275px,
             400px
@@ -14,8 +14,9 @@
           src="{{ product | img_url: '400x' }}"
           src-placeholder="{{ product | img_url: '50x' }}"
           alt="{{ product.title | escape }}"
+          loading="lazy"
           class="w-full h-full object-cover object-center"
-        ></v-lazy-image>
+        >
       </a>
 
       <div class="flex flex-col py-2">

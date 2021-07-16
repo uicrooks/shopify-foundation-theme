@@ -1,6 +1,6 @@
 <div class="{{ class | default: '' }}" style="{{ style | default: '' }}">
   {% if image %}
-    <v-lazy-image
+    <img
       sizes="
         (min-width: 1536px) 500px,
         (min-width: 1280px) 400px,
@@ -18,8 +18,9 @@
       src="{{ image | img_url: '500x' }}"
       src-placeholder="{{  image | img_url: '50x' }}"
       alt="{{ image.alt }}"
+      loading="lazy"
       class="w-full h-full object-cover object-center"
-    ></v-lazy-image>
+    >
   {% else %}
     {{ 'image' | placeholder_svg_tag: 'w-full h-full border' }}
   {% endif %}

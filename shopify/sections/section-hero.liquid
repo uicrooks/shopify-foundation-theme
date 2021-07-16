@@ -3,7 +3,7 @@
 <div class="container mb-12 md:mb-24">
   <div class="hero w-full relative overflow-hidden">
     {% if image %}
-      <v-lazy-image
+      <img
         sizes="
           (min-width: 1280px) 1500px,
           (min-width: 1024px) 1250px,
@@ -21,8 +21,9 @@
         src="{{ image | img_url: '1500x' }}"
         src-placeholder="{{  image | img_url: '50x' }}"
         alt="{{ image.alt }}"
+        loading="lazy"
         class="w-full h-full object-cover object-center"
-      ></v-lazy-image>
+      >
     {% else %}
       {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
     {% endif %}

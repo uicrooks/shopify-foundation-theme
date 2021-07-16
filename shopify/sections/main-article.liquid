@@ -9,7 +9,7 @@
 
   {% if article.image %}
     <div class="mb-8 md:mb-12">
-      <v-lazy-image
+      <img
         sizes="
           (min-width: 640px) 750px,
           (min-width: 480px) 600px,
@@ -21,10 +21,10 @@
           {{ article | img_url: '750x' }} 750w,
         "
         src="{{ article | img_url: '750x' }}"
-        src-placeholder="{{ article | img_url: '50x' }}"
         alt="{{ article.image.alt | escape }}"
+        loading="lazy"
         class="w-full"
-      ></v-lazy-image>
+      >
     </div>
   {% endif %}
 
