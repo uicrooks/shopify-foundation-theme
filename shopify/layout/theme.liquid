@@ -23,9 +23,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
-    {% comment %}
-      css bundle is not loaded during the development task, instead it displays a 404 error in the web console
-    {% endcomment %}
     {{ 'bundle.css' | asset_url | stylesheet_tag }}
 
     <!-- header hook for Shopify plugins -->
