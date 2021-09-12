@@ -68,13 +68,13 @@
     {% if current_variant.available %}
       <div class="mb-10">
         <div class="flex gap-3">
-          <span class="inline-block text-lg {% if product.compare_at_price %}text-red-500{% endif %}">
-            {{ product.price | money }}
+          <span class="inline-block text-lg {% if current_variant.compare_at_price %}text-red-500{% endif %}">
+            {{ current_variant.price | money }}
           </span>
 
-          {% if product.compare_at_price %}
+          {% if current_variant.compare_at_price %}
             <del class="text-lg">
-              {{ product.compare_at_price | money }}
+              {{ current_variant.compare_at_price | money }}
             </del>
 
             <div class="bg-red-500 text-white text-sm tracking-wider uppercase px-2 py-1">
