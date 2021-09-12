@@ -20,7 +20,7 @@
 
 /* override default Shopify styling */
 .button-shopify-buy-it-now {
-  & .shopify-payment-button__button {
+  .shopify-payment-button__button {
     @apply h-12 bg-black border-black text-white border text-base font-medium text-center rounded-sm transition duration-150 px-6 py-2;
 
     &:hover {
