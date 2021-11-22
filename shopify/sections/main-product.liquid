@@ -8,7 +8,6 @@
         <img
           v-if="initialRender"
           src="{{ featured_image | img_url: '750x' }}"
-          src-placeholder="{{ featured_image | img_url: '50x' }}"
           alt="{{ featured_image.alt | escape }}"
           loading="lazy"
           class="w-full h-auto object-cover object-center"
@@ -46,7 +45,6 @@
                   {{ image.src | img_url: '96x' }} 96w
                 "
                 src="{{ image.src | img_url: '96x' }}"
-                src-placeholder="{{ image.src | img_url: '25x' }}"
                 alt="{{ image.alt | escape }}"
                 loading="lazy"
                 class="w-full h-full object-cover object-center pointer-events-none"

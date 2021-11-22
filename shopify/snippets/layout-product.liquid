@@ -10,7 +10,6 @@
         {{ product.featured_image.src | img_url: '630x' }} 630w
       "
       src="{{ product.featured_image.src | img_url: '630x' }}"
-      src-placeholder="{{ product.featured_image.src | img_url: '50x' }}"
       alt="{{ product.featured_image.alt | escape }}"
       loading="lazy"
       class="w-full h-80 sm:h-64 xl:h-80 2xl:max-h-96 object-cover object-center"
