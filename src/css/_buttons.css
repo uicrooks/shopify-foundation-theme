@@ -3,19 +3,11 @@
 }
 
 .button-primary {
-  @apply bg-black border-black text-white;
-
-  &:hover {
-    @apply bg-gray-700 border-gray-700;
-  }
+  @apply bg-black hover:bg-gray-700 border-black hover:border-gray-700 text-white;
 }
 
 .button-secondary {
-  @apply border-black;
-
-  &:hover {
-    @apply bg-black text-white;
-  }
+  @apply border-black hover:bg-black hover:text-white;
 }
 
 /* override default Shopify styling */

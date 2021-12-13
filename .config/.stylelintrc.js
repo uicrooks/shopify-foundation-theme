@@ -34,5 +34,6 @@ module.exports = {
       }
     ],
     'no-descending-specificity': null
-  }
+  },
+  customSyntax: 'postcss-html'
 }
