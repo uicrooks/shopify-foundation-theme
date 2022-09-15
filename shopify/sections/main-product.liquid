@@ -119,9 +119,9 @@
           <div class="flex-1">
             <renderless-product-variant-selector
               v-slot="{ selectedVariant, selectOption }"
-              :current-variant="{{ current_variant | json | replace: '"', "'" }}"
-              :product-options="{{ product.options_with_values | json | replace: '"', "'" }}"
-              :product-variants="{{ product.variants | json | replace: '"', "'" }}"
+              :current-variant="{{ current_variant | json | replace: "'", "\\'" | replace: '"', "'" }}"
+              :product-options="{{ product.options_with_values | json | replace: "'", "\\'" | replace: '"', "'" }}"
+              :product-variants="{{ product.variants | json | replace: "'", "\\'" | replace: '"', "'" }}"
             >
               <div>
                 <input
